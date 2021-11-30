@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BusWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1600">
     <Grid>
-
+        <Grid Margin="0,10,1345,0">
+            <ListView Name="BusStationDataView" Height="739" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="정류장" DisplayMemberBinding="{Binding StationName}"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseLeftButtonUp" Handler="OnBusStationClick" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <TextBox Name="BusStationNameTextBox" HorizontalAlignment="Left" Margin="0,744,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Height="130" KeyDown="OnBusStationInput"/>
+        </Grid>
+        <Grid Margin="285,10,815,0">
+            <DataGrid Name="BusArrivalList" AutoGenerateColumns="False" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="500">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="도착 예정 버스" Width="300"/>
+                    <DataGridTextColumn Header="도착 예정 시간"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Name="PollingTime" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="490" Height="125" Margin="0,744,0,0"/>
+        </Grid>
+        <Grid Margin="900,10,200,135">
+            <DataGrid Name="BusInfo" AutoGenerateColumns="False" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="480">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="저상 버스"/>
+                    <DataGridTextColumn Header="버스 색깔"/>
+                    <DataGridTextColumn Header="만차 여부"/>
+                    <DataGridTextColumn Header="막차"/>
+                    <DataGridTextColumn Header="종료됨"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <TextBlock Name="Clock"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="550" Height="130" Margin="900,754,0,0"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="815,809,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

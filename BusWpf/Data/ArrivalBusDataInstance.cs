@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusWpf.API;
 
-namespace BusWpf.Model
+namespace BusWpf.Data
 {
-    internal class FindStation
+    internal class ArrivalBusDataInstance
     {
-       
+
     }
 }
