@@ -9,30 +9,49 @@ namespace BusWpf.Data
     internal class ArrivalBusData
     {
         private string busRoute;    //버스 번호
-        private int busArrivalTime; //첫번째 도착예쩡 시간
+        private string busArrivalMessage; //도착 메세지 (이걸로 운행여부 및 도착 시간 추출)
+        private int busArrivalTime; //첫번째 도착예정 시간
 
         private bool isLowBus;      //저상버스
         private BUSCOLOR busColor;  //버스 색
         private bool isFull;        //만차
         private bool isLast;        //막차
-        private int firstBusTime;   //첫차시간 (운행여부 구하기용)
-        private int lastBusTime;    //막차시간 (운행여부 구하기용)
-        private bool isRunning;     //운행여부
+        private RUNNINGSTATUS runningStatus;     //운행여부
 
 
         public string GetRouteName() { return busRoute; }
+        public int GetBusArrivalMessage() { return busArrivalTime; }
         public int GetBusArrivalTime() { return busArrivalTime; }
 
         public bool IsLowBus() { return isLowBus; }
         public BUSCOLOR GetBusColor() { return busColor; }
         public bool IsFull() { return isFull; }
         public bool IsLast() { return isLast; }
-        public int GetFirstBusTime() { return firstBusTime; }
-        public int GetLastBusTime() { return lastBusTime; }
-        public bool IsRunning() { return isRunning; }
+        public RUNNINGSTATUS IsRunning() { return runningStatus; }
+
+
 
         public void SetBusRoute(string _busRoute) { busRoute = _busRoute; }
-        public void SetBusArrivalTime(int _busArrivalTime) { busArrivalTime = _busArrivalTime; }
+        public void SetBusArrivalMessage(string _busArrival) 
+        { 
+            busArrivalMessage = _busArrival;
+            
+            if(busArrivalMessage == "운행종료")
+            {
+                SetBusArrivalTime(int.MaxValue);
+                SetIsRunning(RUNNINGSTATUS.CLOSED);
+            }
+            else if(busArrivalMessage == "출발대기")
+            {
+                SetBusArrivalTime(int.MaxValue);
+                SetIsRunning(RUNNINGSTATUS.WAITING);
+            }
+            else
+            {
+                SetIsRunning(RUNNINGSTATUS.RUNNING);
+            }
+        }
+        public void SetBusArrivalTime(int _busArrival) { busArrivalTime = _busArrival; }
 
         public void SetLowBus(int _isLowBus)
         {
@@ -66,35 +85,13 @@ namespace BusWpf.Data
                 isLast = true;
         }
 
-        public void SetFirstBusTime(string _busTime)
+        public void SetIsRunning(RUNNINGSTATUS _running)
         {
-            if (_busTime.Length == 14)
-                _busTime = _busTime.Substring(7, 4);
-
-            try
-            {
-                firstBusTime = int.Parse(_busTime);
-            }
-            catch (Exception e)
-            {
-                firstBusTime = 0;
-            }
-        }
-        public void SetLastBusTime(string _busTime)
-        {
-            if (_busTime.Length == 14)
-                _busTime = _busTime.Substring(7, 4);
-
-            try
-            {
-                firstBusTime = int.Parse(_busTime);
-            }
-            catch (Exception e)
-            {
-                firstBusTime = 0;
-            }
+            runningStatus = _running;
         }
 
+
+        /// /////생성자////////
         public ArrivalBusData()
         {
             initialize();
@@ -103,14 +100,12 @@ namespace BusWpf.Data
         private void initialize()
         {
             busRoute = "";
-            busArrivalTime = 0;
+            busArrivalTime = int.MaxValue;
 
             isLowBus = false;
             busColor = BUSCOLOR.NONE;
             isFull = false;
-            firstBusTime = 0;
-            lastBusTime = 0;
-            isRunning = false;
+            runningStatus = RUNNINGSTATUS.NONE;
         }
 
     }

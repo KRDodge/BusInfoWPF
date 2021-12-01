@@ -67,7 +67,6 @@ namespace BusWpf.Data
                     arrivalBusData = arrivalBusDataList[i];
                 }
             }
-
             return arrivalBusData;
         }
     }

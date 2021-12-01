@@ -32,12 +32,12 @@ namespace BusWpf.API
                 ArrivalBusData busData = new ArrivalBusData();
 
                 busData.SetBusRoute(members["rtNm"].ToString()); 
-                busData.SetBusArrivalTime((int)members["exps1"]);
+                busData.SetBusArrivalTime((int)members["neus1"]);
+                busData.SetBusArrivalMessage(members["arrmsg1"].ToString());
                 busData.SetLowBus((int)members["busType1"]);
                 busData.SetBusColor((int)members["routeType"]);
                 busData.SetIsFull((int)members["full1"]);
-                busData.SetFirstBusTime(members["firstTm"].ToString());
-                busData.SetLastBusTime(members["lastTm"].ToString());
+                busData.SetIsLast((int)members["isLast1"]);
 
                 busDataList.AddArrivalBusDataList(busData);
             }

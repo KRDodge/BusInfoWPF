@@ -13,4 +13,12 @@
         GYUGREEN,       //경기버스
         NONE,           //폐지
     }
+
+    public enum RUNNINGSTATUS
+    {
+        RUNNING = 0,
+        WAITING,
+        CLOSED,
+        NONE,
+    }
 }

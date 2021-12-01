@@ -78,8 +78,20 @@ namespace BusWpf
             dummyBusDataList = SortBusArrival(dummyBusDataList);
             for(int i = 0; i < dummyBusDataList.Count; i++)
             {
-                BusArrivalList.Items.Add(new ListViewArrivalBusData() { busRoute = dummyBusDataList[i].GetRouteName(), busArrivalTime = dummyBusDataList[i].GetBusArrivalTime().ToString() });
-                //BusArrivalList.Items.Add(dummyBusDataList[i].GetRouteName());
+                //버스 시간이 int max값이면 정상 운행이 아니니 확인
+                string busArriveTime = null;
+                if (dummyBusDataList[i].IsRunning() == RUNNINGSTATUS.CLOSED)
+                    busArriveTime = "운행종료";
+                else if(dummyBusDataList[i].IsRunning() == RUNNINGSTATUS.WAITING)
+                    busArriveTime = "출발대기";
+                else if(dummyBusDataList[i].IsRunning() == RUNNINGSTATUS.RUNNING)
+                    busArriveTime = dummyBusDataList[i].GetBusArrivalTime().ToString();
+
+                BusArrivalList.Items.Add(new ListViewArrivalBusData() 
+                { 
+                    busRoute = dummyBusDataList[i].GetRouteName(), 
+                    busArrivalTime = busArriveTime
+                });
             }
         }
 
@@ -106,6 +118,8 @@ namespace BusWpf
             ArrivalBusData arrivalbusData = arrivalBusDataInstance.FindBusInfoByRoute(arrivingBus.busRoute);
             if (arrivalbusData == null)
                 return;
+
+            SetBusDetailUI(arrivalbusData);
         }
 
         //선택한 버스 세부정보 UI에 출력
@@ -148,6 +162,14 @@ namespace BusWpf
             LastLabel.Content = lastLabelString;
 
 
+            string currentTimeString = DateTime.Now.Hour.ToString();
+            currentTimeString += DateTime.Now.Minute.ToString();
+            int currentTime = int.Parse(currentTimeString);
+
+            if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.CLOSED)
+                EndLabel.Content = "운행종료";
+            else
+                EndLabel.Content = "정상운행중";
         }
 
     }
