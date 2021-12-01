@@ -25,7 +25,5 @@ namespace BusWpf.Data
                 busStationDataInstance = new BusStationDataInstance();
             return busStationDataInstance;
         }
-
-       
     }
 }

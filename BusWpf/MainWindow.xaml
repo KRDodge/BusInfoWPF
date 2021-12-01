@@ -25,6 +25,22 @@
         </Grid>
         <Grid Margin="285,10,815,0">
             <ListView Name="BusArrivalList" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="500">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding busArrivalTime}"
+                      Value="0">
+                                <Setter Property="Background"
+                  Value="Red" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.Resources>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseDoubleClick" Handler="OnArrivalBusButtonClick" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="버스 번호" Width="300" DisplayMemberBinding="{Binding busRoute}"/>
@@ -35,15 +51,11 @@
             <TextBlock Name="PollingTime" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="490" Height="125" Margin="0,744,0,0"/>
         </Grid>
         <Grid Margin="900,10,200,135">
-            <DataGrid Name="BusInfo" AutoGenerateColumns="False" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="480">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="저상 버스"/>
-                    <DataGridTextColumn Header="버스 색깔"/>
-                    <DataGridTextColumn Header="만차 여부"/>
-                    <DataGridTextColumn Header="막차"/>
-                    <DataGridTextColumn Header="종료됨"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <Label Content="저상버스" FontSize="20" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top"/>
+            <Label Content="버스 색" FontSize="20" HorizontalAlignment="Left" Margin="9,200,0,0" VerticalAlignment="Top"/>
+            <Label Content="만차" FontSize="20" HorizontalAlignment="Left" Margin="0,300,0,0" VerticalAlignment="Top"/>
+            <Label Content="막차" FontSize="20" HorizontalAlignment="Left" Margin="0,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="종료됨" FontSize="20" HorizontalAlignment="Left" Margin="9,500,0,0" VerticalAlignment="Top"/>
         </Grid>
         <TextBlock Name="Clock"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="550" Height="130" Margin="900,754,0,0"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="815,809,0,0" VerticalAlignment="Top"/>

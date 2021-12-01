@@ -105,10 +105,10 @@ namespace BusWpf.Data
 
     }
 
-    internal class DummyArrivalBusData
+    internal class ListViewArrivalBusData
     {
 
         public string busRoute { get; set; }
-        public int busArrivalTime { get; set; }
+        public string busArrivalTime { get; set; }
     }
 }

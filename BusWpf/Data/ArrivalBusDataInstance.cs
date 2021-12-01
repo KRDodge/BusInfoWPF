@@ -56,5 +56,19 @@ namespace BusWpf.Data
                 }
             }
         }
+
+        public ArrivalBusData FindBusInfoByRoute(string _busRoute)
+        {
+            ArrivalBusData arrivalBusData = null;
+            for(int i = 0; i < arrivalBusDataList.Count; ++i)
+            {
+                if(arrivalBusDataList[i].GetRouteName() == _busRoute)
+                {
+                    arrivalBusData = arrivalBusDataList[i];
+                }
+            }
+
+            return arrivalBusData;
+        }
     }
 }
