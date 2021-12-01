@@ -16,19 +16,22 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <EventSetter Event="MouseLeftButtonUp" Handler="OnBusStationClick" />
+                        <EventSetter Event="MouseDoubleClick" Handler="OnBusStationButtonClick" />
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-            <TextBox Name="BusStationNameTextBox" HorizontalAlignment="Left" Margin="0,744,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Height="130" KeyDown="OnBusStationInput"/>
+            <TextBox Name="BusStationNameTextBox" HorizontalAlignment="Left" Margin="0,744,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Height="60" KeyDown="OnBusStationInput"/>
+            <Button Name="DeleteStation" Content="Delete" HorizontalAlignment="Left" Margin="10,809,0,0" VerticalAlignment="Top" Height="35" Width="95" Click="OnDeleteStationButtonClick"/>
         </Grid>
         <Grid Margin="285,10,815,0">
-            <DataGrid Name="BusArrivalList" AutoGenerateColumns="False" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="500">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="도착 예정 버스" Width="300"/>
-                    <DataGridTextColumn Header="도착 예정 시간"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <ListView Name="BusArrivalList" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="500">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="버스 번호" Width="300" DisplayMemberBinding="{Binding busRoute}"/>
+                        <GridViewColumn Header="도착 예정 시간" Width="200" DisplayMemberBinding="{Binding busArrivalTime}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <TextBlock Name="PollingTime" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="490" Height="125" Margin="0,744,0,0"/>
         </Grid>
         <Grid Margin="900,10,200,135">

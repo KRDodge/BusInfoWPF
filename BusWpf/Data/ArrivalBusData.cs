@@ -14,30 +14,31 @@ namespace BusWpf.Data
         private bool isLowBus;
         private BUSCOLOR busColor;
         private bool isFull;
+        private int firstBusTime;
         private int lastBusTime;
         private bool isRunning;
 
 
         public string GetRouteName() { return busRoute; }
         public int GetBusArrivalTime() { return busArrivalTime; }
-        
+
         public bool IsLowBus() { return isLowBus; }
         public BUSCOLOR GetBusColor() { return busColor; }
         public bool IsFull() { return isFull; }
+        public int GetFirstBusTime() { return firstBusTime; }
         public int GetLastBusTime() { return lastBusTime; }
         public bool IsRunning() { return isRunning; }
-
 
         public void SetBusRoute(string _busRoute) { busRoute = _busRoute; }
         public void SetBusArrivalTime(int _busArrivalTime) { busArrivalTime = _busArrivalTime; }
 
-        public void SetLowBus(int _isLowBus) 
+        public void SetLowBus(int _isLowBus)
         {
-            if(_isLowBus == 0)
+            if (_isLowBus == 0)
             {
                 isLowBus = false;
             }
-            else if(_isLowBus == 1)
+            else if (_isLowBus == 1)
             {
                 isLowBus = true;
             }
@@ -46,9 +47,68 @@ namespace BusWpf.Data
                 isLowBus = false;
             }
         }
-        public void SetBusColor(int _busColor) {  busColor = (BUSCOLOR)_busColor; }
-        public void SetIsFull(bool _isFull) {  isFull = _isFull; }
-        public void SetLastBusTime(int _busTime) {  lastBusTime = _busTime; }
-        public void SetIsRunning(bool _isRunning) {  isRunning = _isRunning; }
+        public void SetBusColor(int _busColor) { busColor = (BUSCOLOR)_busColor; }
+        public void SetIsFull(int _isFull)
+        {
+            if (_isFull == 0)
+                isFull = false;
+            else
+                isFull = true;
+        }
+
+        public void SetFirstBusTime(string _busTime)
+        {
+            if (_busTime.Length == 14)
+                _busTime = _busTime.Substring(7, 4);
+
+            try
+            {
+                firstBusTime = int.Parse(_busTime);
+            }
+            catch (Exception e)
+            {
+                firstBusTime = 0;
+            }
+        }
+        public void SetLastBusTime(string _busTime)
+        {
+            if (_busTime.Length == 14)
+                _busTime = _busTime.Substring(7, 4);
+
+            try
+            {
+                firstBusTime = int.Parse(_busTime);
+            }
+            catch (Exception e)
+            {
+                firstBusTime = 0;
+            }
+        }
+
+        public ArrivalBusData()
+        {
+            initialize();
+        }
+
+        private void initialize()
+        {
+            busRoute = "";
+            busArrivalTime = 0;
+
+            isLowBus = false;
+            busColor = BUSCOLOR.NONE;
+            isFull = false;
+            firstBusTime = 0;
+            lastBusTime = 0;
+            isRunning = false;
+        }
+
+    }
+
+    internal class DummyArrivalBusData
+    {
+
+        public string busRoute { get; set; }
+        public int busArrivalTime { get; set; }
     }
 }

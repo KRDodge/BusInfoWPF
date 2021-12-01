@@ -20,6 +20,7 @@ namespace BusWpf.API
                 return;
 
             ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
+            busDataList.ClearArrivalBusDataList();
 
             JToken ItemJToken = getBusArrivalJToken(_busStationID);
             if (ItemJToken == null)
@@ -33,10 +34,10 @@ namespace BusWpf.API
                 busData.SetBusRoute(members["rtNm"].ToString());
                 busData.SetBusArrivalTime((int)members["exps1"]);
                 busData.SetLowBus((int)members["busType1"]);
-                busData.SetBusColor((int)members["exps1"]);
-                busData.SetIsFull((bool)members["full1"]);
-                busData.SetLastBusTime((int)members["exps1"]);
-                busData.SetIsRunning((bool)members["exps1"]);
+                busData.SetBusColor((int)members["routeType"]);
+                busData.SetIsFull((int)members["full1"]);
+                busData.SetFirstBusTime(members["firstTm"].ToString());
+                busData.SetLastBusTime(members["lastTm"].ToString());
 
                 busDataList.AddArrivalBusDataList(busData);
             }

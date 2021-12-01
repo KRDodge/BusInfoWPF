@@ -38,33 +38,49 @@ namespace BusWpf
         {
             if (e.Key == Key.Return)
             {
-                //Button busStationButton = new Button();
-                //busStationButton.Content = BusStationNameTextBox.Text;
-                //busStationButton.Foreground = Brushes.Black;
-                //busStationButton.Visibility = Visibility.Visible;
-                //busStationButton.Click += new RoutedEventHandler(OnBusStationClick);
-
-
-                //List<string> stringv = new List<string>();
-                //stringv.Add(stationName);
-
-                //ListViewItem listViewItem = new ListViewItem();
-                //listViewItem.Content = stationName;
-
-                //BusStationDataView.ItemsSource = stringv;
                 BusStationDataView.Items.Add(BusStationNameTextBox.Text);
                 BusStationDataView.Items.Refresh();
-
             }
         }
 
-        private void OnBusStationClick(object sender, MouseButtonEventArgs e)
+        private void OnBusStationButtonClick(object sender, MouseButtonEventArgs e)
         {
             BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
             BusStationInfo busStationInfo = new BusStationInfo();
 
             int busStationID = busStationInfo.GetBusStationIDbyName((sender as ListViewItem).Content.ToString());
             arrivalAPIClass.FindStationInfoByID(busStationID);
+
+            SetBusArrivalList();
+        }
+
+        private void OnDeleteStationButtonClick(object sender, RoutedEventArgs e)
+        {
+            BusStationDataView.Items.RemoveAt(BusStationDataView.SelectedIndex);
+        }
+
+        private void SetBusArrivalList()
+        {
+            if(BusArrivalList.Items.IsEmpty ==false)
+                BusArrivalList.Items.Clear();
+
+            ArrivalBusDataInstance arrivalBusDataInstance = ArrivalBusDataInstance.GetInstance();
+            List<ArrivalBusData> dummyBusDataList = arrivalBusDataInstance.GetArrivalBusDataList();
+
+            dummyBusDataList = SortBusArrival(dummyBusDataList);
+            for(int i = 0; i < dummyBusDataList.Count; i++)
+            {
+                BusArrivalList.Items.Add(new DummyArrivalBusData() { busRoute = dummyBusDataList[i].GetRouteName(), busArrivalTime = dummyBusDataList[i].GetBusArrivalTime() });
+                //BusArrivalList.Items.Add(dummyBusDataList[i].GetRouteName());
+            }
+        }
+
+        private List<ArrivalBusData> SortBusArrival(List<ArrivalBusData> _dataList)
+        {
+            List<ArrivalBusData> sortDataList = _dataList;
+            sortDataList.Sort((data1, data2) => data1.GetBusArrivalTime().CompareTo(data2.GetBusArrivalTime()));
+
+            return sortDataList;
         }
     }
 }

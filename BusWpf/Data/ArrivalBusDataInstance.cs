@@ -12,6 +12,16 @@ namespace BusWpf.Data
 
         private static ArrivalBusDataInstance arrivalBusDataInstance;
 
+        public ArrivalBusDataInstance()
+        {
+            initialize();
+        }
+
+        private void initialize()
+        {
+            arrivalBusDataList = new List<ArrivalBusData>();
+        }
+
         public static ArrivalBusDataInstance GetInstance()
         {
             if (arrivalBusDataInstance == null)
