@@ -43,7 +43,7 @@ namespace BusWpf.Data
             }
             else if(busArrivalMessage == "출발대기")
             {
-                SetBusArrivalTime(int.MaxValue);
+                SetBusArrivalTime(int.MaxValue-1);
                 SetIsRunning(RUNNINGSTATUS.WAITING);
             }
             else

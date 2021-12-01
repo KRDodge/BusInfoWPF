@@ -85,7 +85,14 @@ namespace BusWpf
                 else if(dummyBusDataList[i].IsRunning() == RUNNINGSTATUS.WAITING)
                     busArriveTime = "출발대기";
                 else if(dummyBusDataList[i].IsRunning() == RUNNINGSTATUS.RUNNING)
-                    busArriveTime = dummyBusDataList[i].GetBusArrivalTime().ToString();
+                {
+                    int minute = dummyBusDataList[i].GetBusArrivalTime() / 60;
+                    int second = dummyBusDataList[i].GetBusArrivalTime() % 60;
+                    busArriveTime += minute.ToString();
+                    busArriveTime += "분 ";
+                    busArriveTime += second.ToString();
+                    busArriveTime += "초 후 도착 ";
+                }
 
                 BusArrivalList.Items.Add(new ListViewArrivalBusData() 
                 { 
@@ -151,7 +158,8 @@ namespace BusWpf
                 color = (Color)ColorConverter.ConvertFromString("#009E96");
             else if (busColor == BUSCOLOR.NONE)
                 color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
-            ColorLabel.Background = new SolidColorBrush(color);
+            ColorLabel.Stroke = new SolidColorBrush(color);
+            ColorLabel.Fill = new SolidColorBrush(color);
 
 
             string fullLabelString = _arrivalbusData.IsFull() ? "만차" : "잔여좌석 있음";
