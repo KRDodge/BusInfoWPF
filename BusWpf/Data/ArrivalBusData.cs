@@ -8,15 +8,16 @@ namespace BusWpf.Data
 {
     internal class ArrivalBusData
     {
-        private string busRoute;
-        private int busArrivalTime;
+        private string busRoute;    //버스 번호
+        private int busArrivalTime; //첫번째 도착예쩡 시간
 
-        private bool isLowBus;
-        private BUSCOLOR busColor;
-        private bool isFull;
-        private int firstBusTime;
-        private int lastBusTime;
-        private bool isRunning;
+        private bool isLowBus;      //저상버스
+        private BUSCOLOR busColor;  //버스 색
+        private bool isFull;        //만차
+        private bool isLast;        //막차
+        private int firstBusTime;   //첫차시간 (운행여부 구하기용)
+        private int lastBusTime;    //막차시간 (운행여부 구하기용)
+        private bool isRunning;     //운행여부
 
 
         public string GetRouteName() { return busRoute; }
@@ -25,6 +26,7 @@ namespace BusWpf.Data
         public bool IsLowBus() { return isLowBus; }
         public BUSCOLOR GetBusColor() { return busColor; }
         public bool IsFull() { return isFull; }
+        public bool IsLast() { return isLast; }
         public int GetFirstBusTime() { return firstBusTime; }
         public int GetLastBusTime() { return lastBusTime; }
         public bool IsRunning() { return isRunning; }
@@ -54,6 +56,14 @@ namespace BusWpf.Data
                 isFull = false;
             else
                 isFull = true;
+        }
+
+        public void SetIsLast(int _isLast)
+        {
+            if (_isLast == 0)
+                isLast = false;
+            else
+                isLast = true;
         }
 
         public void SetFirstBusTime(string _busTime)

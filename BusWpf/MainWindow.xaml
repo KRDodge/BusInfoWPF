@@ -52,10 +52,15 @@
         </Grid>
         <Grid Margin="900,10,200,135">
             <Label Content="저상버스" FontSize="20" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top"/>
-            <Label Content="버스 색" FontSize="20" HorizontalAlignment="Left" Margin="9,200,0,0" VerticalAlignment="Top"/>
+            <Label Name="LowLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,100,0,0" VerticalAlignment="Top"/>
+            <Label Content="버스 색" FontSize="20" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top"/>
+            <Label Name="ColorLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,200,0,0" VerticalAlignment="Top"/>
             <Label Content="만차" FontSize="20" HorizontalAlignment="Left" Margin="0,300,0,0" VerticalAlignment="Top"/>
+            <Label Name="FullLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,300,0,0" VerticalAlignment="Top"/>
             <Label Content="막차" FontSize="20" HorizontalAlignment="Left" Margin="0,400,0,0" VerticalAlignment="Top"/>
-            <Label Content="종료됨" FontSize="20" HorizontalAlignment="Left" Margin="9,500,0,0" VerticalAlignment="Top"/>
+            <Label Name="LastLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,400,0,0" VerticalAlignment="Top"/>
+            <Label Content="종료됨" FontSize="20" HorizontalAlignment="Left" Margin="0,500,0,0" VerticalAlignment="Top"/>
+            <Label Name="EndLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,500,0,0" VerticalAlignment="Top"/>
         </Grid>
         <TextBlock Name="Clock"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="550" Height="130" Margin="900,754,0,0"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="815,809,0,0" VerticalAlignment="Top"/>

@@ -31,7 +31,7 @@ namespace BusWpf.API
                 System.Diagnostics.Debug.WriteLine(members["rtNm"]);
                 ArrivalBusData busData = new ArrivalBusData();
 
-                busData.SetBusRoute(members["rtNm"].ToString());
+                busData.SetBusRoute(members["rtNm"].ToString()); 
                 busData.SetBusArrivalTime((int)members["exps1"]);
                 busData.SetLowBus((int)members["busType1"]);
                 busData.SetBusColor((int)members["routeType"]);

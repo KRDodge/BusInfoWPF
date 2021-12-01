@@ -94,7 +94,6 @@ namespace BusWpf
 
         //ListView에서 busData선택한 busData 보기
         //busDataInstance에서 선택한 busData와 맞는 정보가져오기
-        //세부정보 UI에 출력
         private void OnArrivalBusButtonClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -107,7 +106,47 @@ namespace BusWpf
             ArrivalBusData arrivalbusData = arrivalBusDataInstance.FindBusInfoByRoute(arrivingBus.busRoute);
             if (arrivalbusData == null)
                 return;
-            
+        }
+
+        //선택한 버스 세부정보 UI에 출력
+        private void SetBusDetailUI(ArrivalBusData _arrivalbusData)
+        {
+            string lowLabelString = _arrivalbusData.IsLowBus() ? "저상버스" : "일반버스";
+            LowLabel.Content = lowLabelString;
+
+
+            BUSCOLOR busColor = _arrivalbusData.GetBusColor();
+            Color color;
+            if (busColor == BUSCOLOR.WHITE)
+                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
+            else if (busColor == BUSCOLOR.SKYBLUE)
+                color = (Color)ColorConverter.ConvertFromString("#3D5BAB");
+            else if (busColor == BUSCOLOR.VILLAGEGREEN)
+                color = (Color)ColorConverter.ConvertFromString("#53B332");
+            else if (busColor == BUSCOLOR.BLUE)
+                color = (Color)ColorConverter.ConvertFromString("#0068B7");
+            else if (busColor == BUSCOLOR.GREEN)
+                color = (Color)ColorConverter.ConvertFromString("#53B332");
+            else if (busColor == BUSCOLOR.YELLOW)
+                color = (Color)ColorConverter.ConvertFromString("#F2B70A");
+            else if (busColor == BUSCOLOR.RED)
+                color = (Color)ColorConverter.ConvertFromString("#E60012");
+            else if (busColor == BUSCOLOR.ICNBLUE)
+                color = (Color)ColorConverter.ConvertFromString("#0068B7");
+            else if (busColor == BUSCOLOR.GYUGREEN)
+                color = (Color)ColorConverter.ConvertFromString("#009E96");
+            else if (busColor == BUSCOLOR.NONE)
+                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
+            ColorLabel.Background = new SolidColorBrush(color);
+
+
+            string fullLabelString = _arrivalbusData.IsFull() ? "만차" : "잔여좌석 있음";
+            FullLabel.Content = fullLabelString;
+
+
+            string lastLabelString = _arrivalbusData.IsLast() ? "막차" : "정상운행";
+            LastLabel.Content = lastLabelString;
+
 
         }
 
