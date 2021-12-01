@@ -11,7 +11,7 @@
             <ListView Name="BusStationDataView" Height="739" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="정류장" DisplayMemberBinding="{Binding StationName}"/>
+                        <GridViewColumn Header="정류장" Width="200"/>
                     </GridView>
                 </ListView.View>
                 <ListView.ItemContainerStyle>

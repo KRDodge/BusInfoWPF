@@ -44,16 +44,16 @@ namespace BusWpf
                 //busStationButton.Visibility = Visibility.Visible;
                 //busStationButton.Click += new RoutedEventHandler(OnBusStationClick);
 
-                string stationName = BusStationNameTextBox.Text;
 
-                List<string> stringv = new List<string>();
-                stringv.Add(stationName);
+                //List<string> stringv = new List<string>();
+                //stringv.Add(stationName);
 
-                ListViewItem listViewItem = new ListViewItem();
-                listViewItem.Content = stationName;
+                //ListViewItem listViewItem = new ListViewItem();
+                //listViewItem.Content = stationName;
 
-                BusStationDataView.ItemsSource = stringv;
-
+                //BusStationDataView.ItemsSource = stringv;
+                BusStationDataView.Items.Add(BusStationNameTextBox.Text);
+                BusStationDataView.Items.Refresh();
 
             }
         }

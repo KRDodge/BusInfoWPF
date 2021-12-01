@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Net.Http;
 using System.IO;
+using BusWpf.Data;
 
 
 namespace BusWpf.API
@@ -18,6 +19,50 @@ namespace BusWpf.API
             if (_busStationID == -1)
                 return;
 
+            ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
+
+            JToken ItemJToken = getBusArrivalJToken(_busStationID);
+            if (ItemJToken == null)
+                return;
+
+            foreach (JToken members in ItemJToken)
+            {
+                System.Diagnostics.Debug.WriteLine(members["rtNm"]);
+                ArrivalBusData busData = new ArrivalBusData();
+
+                busData.SetBusRoute(members["rtNm"].ToString());
+                busData.SetBusArrivalTime((int)members["exps1"]);
+                busData.SetLowBus((int)members["busType1"]);
+                busData.SetBusColor((int)members["exps1"]);
+                busData.SetIsFull((bool)members["full1"]);
+                busData.SetLastBusTime((int)members["exps1"]);
+                busData.SetIsRunning((bool)members["exps1"]);
+
+                busDataList.AddArrivalBusDataList(busData);
+            }
+        }
+
+        public void UpdateStationInfoByID(int _busStationID)
+        {
+            if (_busStationID == -1)
+                return;
+
+            ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
+
+            JToken ItemJToken = getBusArrivalJToken(_busStationID);
+            if (ItemJToken == null)
+                return;
+
+            foreach (JToken members in ItemJToken)
+            {
+                System.Diagnostics.Debug.WriteLine(members["rtNm"]);
+
+                busDataList.SetBusArrivalTimeByBusName(members["rtNm"].ToString(),(int)members["exps1"]);
+            }
+        }
+
+        private JToken getBusArrivalJToken(int _busStationID)
+        {
             //정류장ID로 API에서 버스 정보 받아오기
             string url = "http://ws.bus.go.kr/api/rest/arrive/getLowArrInfoByStId"; // URL
             url += "?ServiceKey=" + "0dpmdc2FE6BlxQH1ApIaxodKsJobGA9yu7qG4lTln1Y9WAXFJEu48Lsn1avbVzt3wrr%2FvBuiWYZITzi%2Bc6u%2Fzg%3D%3D"; // Service Key
@@ -41,10 +86,7 @@ namespace BusWpf.API
             JToken BodyJToken = busJOBcect.SelectToken("msgBody");
             JToken ItemJToken = BodyJToken.SelectToken("itemList");
 
-            foreach (JToken members in ItemJToken)
-            {
-                Console.WriteLine(members["rtNm"]);
-            }
+            return ItemJToken;
         }
     }
 }
