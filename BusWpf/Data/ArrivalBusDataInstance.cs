@@ -45,13 +45,14 @@ namespace BusWpf.Data
            arrivalBusDataList.Clear();
         }
 
-        public void SetBusArrivalTimeByBusName(string _routeName, int _time)
+        public void SetBusArrivalTimeByBusName(string _routeName, string _message, int _time)
         {
             for(int i = 0; i < arrivalBusDataList.Count; ++i)
             {
                 if(arrivalBusDataList[i].GetRouteName() == _routeName)
                 {
                     arrivalBusDataList[i].SetBusArrivalTime(_time);
+                    arrivalBusDataList[i].SetBusArrivalMessage(_message);
                     return;
                 }
             }

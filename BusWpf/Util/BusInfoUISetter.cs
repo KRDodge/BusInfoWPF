@@ -72,7 +72,9 @@ namespace BusWpf.Util
                 int minute = _arrivalbusData.GetBusArrivalTime() / 60;
                 int second = _arrivalbusData.GetBusArrivalTime() % 60;
                 busArriveTime += minute.ToString();
-                busArriveTime += "분 후 도착";
+                busArriveTime += "분 ";
+                busArriveTime += second.ToString();
+                busArriveTime += "초 후 도착";
             }
             arrivalTime.Text = busArriveTime;
 

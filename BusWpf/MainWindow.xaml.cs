@@ -59,7 +59,7 @@ namespace BusWpf
         private void OnBusStationButtonClick(object sender, MouseButtonEventArgs e)
         {
             BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
-            BusStationInfoInstance busStationInfo = new BusStationInfoInstance();
+            BusStationInfoInstance busStationInfo = BusStationInfoInstance.GetInstance();
 
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
             int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
