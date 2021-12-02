@@ -68,7 +68,31 @@ namespace BusWpf.Data
                 isLowBus = false;
             }
         }
-        public void SetBusColor(int _busColor) { busColor = (BUSCOLOR)_busColor; }
+
+        public void SetBusColor(int _busColor) 
+        {
+            string busRouteColor = null;
+            if(busRoute.Length != 0 )
+                busRouteColor = busRoute.Substring(0, 1);
+
+            if(busRouteColor == "M") //M버스면 노선상관없이 광역급행버스 색
+            {
+                busColor = BUSCOLOR.MSKYBLUE;
+            }
+            else if(busRouteColor == "G") //G버스면 노선상관없이 광역버스 색
+            {
+                busColor = BUSCOLOR.RED;
+            }
+            else if (busRouteColor == "N") //G버스면 노선상관없이 심야버스 색
+            {
+                busColor = BUSCOLOR.NSKYBLUE;
+            }
+            else
+            {
+                busColor = (BUSCOLOR)_busColor;
+            }
+        }
+
         public void SetIsFull(int _isFull)
         {
             if (_isFull == 0)

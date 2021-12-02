@@ -5,13 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BusWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600">
+        Title="MainWindow" Height="900" Width="900">
     <Grid>
-        <Grid Margin="0,10,1345,0">
-            <ListView Name="BusStationDataView" Height="739" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235">
+        <Grid Margin="0,0,0,0" HorizontalAlignment="Left" Height="900" Width="600">
+            <TextBlock HorizontalAlignment="Left" FontSize="20" Margin="20,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <ListView Name="BusArrivalList" Width="600" Margin="0,52,0,10" FontSize="16">
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="정류장" Width="200"/>
+                    <GridView x:Name="BusArrivalGridView">
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid  Margin="600,0,0,0" HorizontalAlignment="Right" Height="900" Width="300">
+            <ListView Name="BusStationList" HorizontalAlignment="Right" VerticalAlignment="Top" Width="285" Height="500" Margin="0,0,0,0">
+                <ListView.View>
+                    <GridView x:Name="BusStationGridView">
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn/>
                     </GridView>
                 </ListView.View>
                 <ListView.ItemContainerStyle>
@@ -20,49 +40,20 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-            <TextBox Name="BusStationNameTextBox" HorizontalAlignment="Left" Margin="0,744,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Height="60" KeyDown="OnBusStationInput"/>
-            <Button Name="DeleteStation" Content="Delete" HorizontalAlignment="Left" Margin="10,809,0,0" VerticalAlignment="Top" Height="35" Width="95" Click="OnDeleteStationButtonClick"/>
+            <Grid Margin="0,500,0,0" VerticalAlignment="Top" Height="100" Width="300">
+                <TextBlock Text="갱신시간" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBox Name="PollingTextBlock" FontSize="20" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="100"/>
+                <Button Name="PollingButton" Content="적용" Margin="0,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" Width="50"/>
+            </Grid>
+            <Line X1="0" Y1="600" X2="300" Y2="600" Stroke="Black"/>
+            <Grid Margin="0,600,0,0" VerticalAlignment="Top" Height="300" Width="300">
+                <TextBlock Text="설명" Margin="20,0,0,150" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBox Name="StationDescriptionTextBlock" FontSize="20" Margin="50,0,0,150" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="180"/>
+                <TextBlock Text="정류장ID" Margin="20,0,0,50" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBox Name="StationIDTextBlock" FontSize="20" Margin="50,0,0,50" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="180"/>
+                <Button Name="AddStationButton" Content="추가" Margin="-100,100,0,0" Height="40" Width="60" Click="OnAddStationButtonClick"/>
+                <Button Name="DeleteStationButton" Content="삭제" Margin="100,100,0,0" Height="40" Width="60" Click="OnDeleteStationButtonClick"/>
+            </Grid>
         </Grid>
-        <Grid Margin="285,10,815,0">
-            <ListView Name="BusArrivalList" Height="739" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="500">
-                <ListView.Resources>
-                    <Style TargetType="ListViewItem">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding busArrivalTime}"
-                      Value="0">
-                                <Setter Property="Background"
-                  Value="Red" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.Resources>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <EventSetter Event="MouseDoubleClick" Handler="OnArrivalBusButtonClick" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="버스 번호" Width="300" DisplayMemberBinding="{Binding busRoute}"/>
-                        <GridViewColumn Header="도착 예정 시간" Width="200" DisplayMemberBinding="{Binding busArrivalTime}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <TextBlock Name="PollingTime" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="490" Height="125" Margin="0,744,0,0"/>
-        </Grid>
-        <Grid Margin="900,10,200,135">
-            <Label Content="저상버스" FontSize="20" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top"/>
-            <Label Name="LowLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,100,0,0" VerticalAlignment="Top"/>
-            <Label Content="버스 색" FontSize="20" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top"/>
-            <Rectangle Name="ColorLabel" HorizontalAlignment="Left" Margin="200,200,0,0" VerticalAlignment="Top" Height="50" Width="200"/>
-            <Label Content="만차" FontSize="20" HorizontalAlignment="Left" Margin="0,300,0,0" VerticalAlignment="Top"/>
-            <Label Name="FullLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,300,0,0" VerticalAlignment="Top"/>
-            <Label Content="막차" FontSize="20" HorizontalAlignment="Left" Margin="0,400,0,0" VerticalAlignment="Top"/>
-            <Label Name="LastLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,400,0,0" VerticalAlignment="Top" />
-            <Label Content="종료됨" FontSize="20" HorizontalAlignment="Left" Margin="0,500,0,0" VerticalAlignment="Top"/>
-            <Label Name="EndLabel" FontSize="20" HorizontalAlignment="Left" Margin="200,500,0,0" VerticalAlignment="Top"/>
-        </Grid>
-        <TextBlock Name="Clock"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="550" Height="130" Margin="900,754,0,0"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="815,809,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

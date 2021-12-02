@@ -21,6 +21,7 @@ namespace BusWpf.API
                 reader.ReadLine(); //csv에 있는 첫 열 날리기 (header정보)
 
                 List<int> stationIDList = new List<int>();
+                List<int> stationARSIDList = new List<int>();
                 List<string> stationNameList = new List<string>();
 
                 while (!reader.EndOfStream)
@@ -29,11 +30,13 @@ namespace BusWpf.API
                     var line = reader.ReadLine();
                     string[] values = line.Split(',');
 
-                    stationIDList.Add(Int32.Parse(values[0]));
+                    stationIDList.Add(int.Parse(values[0]));
+                    stationARSIDList.Add(int.Parse(values[1]));
                     stationNameList.Add(values[2]);
                 }
 
                 busStationData.SetStationIDList(stationIDList);
+                busStationData.SetStationARSIDList(stationARSIDList);
                 busStationData.SetStationNameList(stationNameList);
 
             }

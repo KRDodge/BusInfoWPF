@@ -9,9 +9,9 @@ namespace BusWpf.API
 {
     public class BusStationInfo
     {
-        public int GetBusStationIDbyName(string _name)
+        public int GetBusStationIDbyARSID(int _arsID)
         {
-            if (_name == null)
+            if (_arsID == null)
                 return -1;
 
             BusStationDataInstance busStationData;
@@ -19,10 +19,10 @@ namespace BusWpf.API
 
             int stationID = -1;
 
-            List<string> busStationNameList = busStationData.GetStationNameList();
+            List<int> busStationNameList = busStationData.GetStationARSIDList();
             for (int i = 0; i < busStationNameList.Count; ++i)
             {
-                if (busStationNameList[i] == _name)
+                if (busStationNameList[i] == arsID)
                 {
                     stationID = busStationData.GetStationIDList()[i];
                     break;

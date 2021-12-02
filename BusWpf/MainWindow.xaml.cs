@@ -36,14 +36,36 @@ namespace BusWpf
         }
 
         //사용자의 입력 받기 (enter 키 누르면 확인)
-        private void OnBusStationInput(object sender, KeyEventArgs e)
+        private void OnAddStationButtonClick(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Return)
+            if (StationDescriptionTextBlock.Text == "" || StationIDTextBlock.Text == "")
+                return;
+            
+            StackPanel stack = new StackPanel();
+            TextBlock desTextBlock = new TextBlock();
+            desTextBlock.FontSize = 20;
+            desTextBlock.Text = StationDescriptionTextBlock.Text;
+            TextBlock idTextBlock = new TextBlock();
+            idTextBlock.Text = "ID " + StationIDTextBlock.Text;
+            idTextBlock.FontSize = 20;
+
+            stack.Children.Add(desTextBlock);
+            stack.Children.Add(idTextBlock);
+
+            Border border = new Border()
             {
-                BusStationDataView.Items.Add(BusStationNameTextBox.Text);
-                BusStationDataView.Items.Refresh();
-                BusStationNameTextBox.Clear();
-            }
+                BorderBrush = new SolidColorBrush(Color.FromRgb(50, 50, 50)),
+                BorderThickness = new Thickness(1),
+                Width = 260,
+                Height = 60,
+                Name = idTextBlock.Text.ToString(),
+            };
+            border.Child = stack;
+
+            BusStationList.Items.Add(border);
+            BusStationList.Items.Refresh();
+            StationDescriptionTextBlock.Clear();
+            StationIDTextBlock.Clear();
         }
 
         //API에서 선택한 정류장의 버스도착정보 가져오기
@@ -52,7 +74,9 @@ namespace BusWpf
             BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
             BusStationInfo busStationInfo = new BusStationInfo();
 
-            int busStationID = busStationInfo.GetBusStationIDbyName((sender as ListViewItem).Content.ToString());
+            string busStationARSString = (sender as Border).Name.ToString(); //
+            int busStationARSID = int.Parse(busStationARSString.Substring(3, busStationARSString.Length - 3)); //ID Prefix 부분 잘라주기
+            int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
             arrivalAPIClass.FindStationInfoByID(busStationID);
 
             SetBusArrivalList();
@@ -61,7 +85,7 @@ namespace BusWpf
         //정류장목록 지우기
         private void OnDeleteStationButtonClick(object sender, RoutedEventArgs e)
         {
-            BusStationDataView.Items.RemoveAt(BusStationDataView.SelectedIndex);
+            BusStationList.Items.RemoveAt(BusStationList.SelectedIndex);
         }
 
         //도착하는 버스 리스트 UI에 출력
@@ -132,53 +156,71 @@ namespace BusWpf
         //선택한 버스 세부정보 UI에 출력
         private void SetBusDetailUI(ArrivalBusData _arrivalbusData)
         {
-            string lowLabelString = _arrivalbusData.IsLowBus() ? "저상버스" : "일반버스";
-            LowLabel.Content = lowLabelString;
+            //string lowLabelString = _arrivalbusData.IsLowBus() ? "저상버스" : "일반버스";
+            //LowLabel.Content = lowLabelString;
 
 
-            BUSCOLOR busColor = _arrivalbusData.GetBusColor();
-            Color color;
-            if (busColor == BUSCOLOR.WHITE)
-                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
-            else if (busColor == BUSCOLOR.SKYBLUE)
-                color = (Color)ColorConverter.ConvertFromString("#3D5BAB");
-            else if (busColor == BUSCOLOR.VILLAGEGREEN)
-                color = (Color)ColorConverter.ConvertFromString("#53B332");
-            else if (busColor == BUSCOLOR.BLUE)
-                color = (Color)ColorConverter.ConvertFromString("#0068B7");
-            else if (busColor == BUSCOLOR.GREEN)
-                color = (Color)ColorConverter.ConvertFromString("#53B332");
-            else if (busColor == BUSCOLOR.YELLOW)
-                color = (Color)ColorConverter.ConvertFromString("#F2B70A");
-            else if (busColor == BUSCOLOR.RED)
-                color = (Color)ColorConverter.ConvertFromString("#E60012");
-            else if (busColor == BUSCOLOR.ICNBLUE)
-                color = (Color)ColorConverter.ConvertFromString("#0068B7");
-            else if (busColor == BUSCOLOR.GYUGREEN)
-                color = (Color)ColorConverter.ConvertFromString("#009E96");
-            else if (busColor == BUSCOLOR.NONE)
-                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
-            ColorLabel.Stroke = new SolidColorBrush(color);
-            ColorLabel.Fill = new SolidColorBrush(color);
+            //BUSCOLOR busColor = _arrivalbusData.GetBusColor();
+            //Color color = getBusColor(busColor);   
+            //ColorLabel.Stroke = new SolidColorBrush(color);
+            //ColorLabel.Fill = new SolidColorBrush(color);
 
 
-            string fullLabelString = _arrivalbusData.IsFull() ? "만차" : "잔여좌석 있음";
-            FullLabel.Content = fullLabelString;
+            //string fullLabelString = _arrivalbusData.IsFull() ? "만차" : "잔여좌석 있음";
+            //FullLabel.Content = fullLabelString;
 
 
-            string lastLabelString = _arrivalbusData.IsLast() ? "막차" : "정상운행";
-            LastLabel.Content = lastLabelString;
+            //string lastLabelString = _arrivalbusData.IsLast() ? "막차" : "정상운행";
+            //if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.CLOSED)
+            //{
+            //    LastLabel.Content = "운행종료";
+            //    EndLabel.Content = "운행종료";
+            //}
+            //else
+            //{
+            //    LastLabel.Content = lastLabelString;
 
-
-            string currentTimeString = DateTime.Now.Hour.ToString();
-            currentTimeString += DateTime.Now.Minute.ToString();
-            int currentTime = int.Parse(currentTimeString);
-
-            if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.CLOSED)
-                EndLabel.Content = "운행종료";
-            else
-                EndLabel.Content = "정상운행중";
+            //    EndLabel.Content = "정상운행중";
+            //}
         }
 
+        private Color getBusColor(BUSCOLOR _busColor)
+        {
+            Color color;
+
+            if (_busColor == BUSCOLOR.WHITE)
+                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
+            else if (_busColor == BUSCOLOR.AIRPORTBLUE)
+                color = (Color)ColorConverter.ConvertFromString("#3D5BAB");
+            else if (_busColor == BUSCOLOR.VILLAGEGREEN)
+                color = (Color)ColorConverter.ConvertFromString("#53B332");
+            else if (_busColor == BUSCOLOR.BLUE)
+                color = (Color)ColorConverter.ConvertFromString("#0068B7");
+            else if (_busColor == BUSCOLOR.GREEN)
+                color = (Color)ColorConverter.ConvertFromString("#53B332");
+            else if (_busColor == BUSCOLOR.YELLOW)
+                color = (Color)ColorConverter.ConvertFromString("#F2B70A");
+            else if (_busColor == BUSCOLOR.RED)
+                color = (Color)ColorConverter.ConvertFromString("#E60012");
+            else if (_busColor == BUSCOLOR.ICNBLUE)
+                color = (Color)ColorConverter.ConvertFromString("#0068B7");
+            else if (_busColor == BUSCOLOR.GYUGREEN)
+                color = (Color)ColorConverter.ConvertFromString("#009E96");
+            else if (_busColor == BUSCOLOR.MSKYBLUE)
+                color = (Color)ColorConverter.ConvertFromString("#006896");
+            else if (_busColor == BUSCOLOR.NSKYBLUE)
+                color = (Color)ColorConverter.ConvertFromString("#3D5BAB");
+            else if (_busColor == BUSCOLOR.DEPRECATED)
+                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
+            else if (_busColor == BUSCOLOR.NONE)
+                color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
+
+            return color;
+        }
+
+        private void BusArrivalList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

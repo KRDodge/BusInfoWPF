@@ -8,14 +8,17 @@ namespace BusWpf.Data
 {
     internal class BusStationDataInstance
     {
-        private List<int> StationIDList;
-        private List<string> StationNameList;
+        private List<int> stationIDList;
+        private List<int> stationARSIDList;
+        private List<string> stationNameList;
 
-        public List<int> GetStationIDList() { return StationIDList; }
-        public List<string> GetStationNameList() { return StationNameList; }
+        public List<int> GetStationIDList() { return stationIDList; }
+        public List<int> GetStationARSIDList() { return stationARSIDList; }
+        public List<string> GetStationNameList() { return stationNameList; }
 
-        public void SetStationIDList(List<int> _stationIDList) { StationIDList = _stationIDList; }
-        public void SetStationNameList(List<string> _stationNameList) { StationNameList = _stationNameList; }
+        public void SetStationIDList(List<int> _stationIDList) { stationIDList = _stationIDList; }
+        public void SetStationARSIDList(List<int> _stationARSIDList) { stationARSIDList = _stationARSIDList; }
+        public void SetStationNameList(List<string> _stationNameList) { stationNameList = _stationNameList; }
 
         private static BusStationDataInstance busStationDataInstance;
 
