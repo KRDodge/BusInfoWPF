@@ -58,7 +58,7 @@ namespace BusWpf
                 BorderThickness = new Thickness(1),
                 Width = 260,
                 Height = 60,
-                Name = idTextBlock.Text.ToString(),
+                Name = "ID"+ StationIDTextBlock.Text,
             };
             border.Child = stack;
 
@@ -74,8 +74,8 @@ namespace BusWpf
             BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
             BusStationInfo busStationInfo = new BusStationInfo();
 
-            string busStationARSString = (sender as Border).Name.ToString(); //
-            int busStationARSID = int.Parse(busStationARSString.Substring(3, busStationARSString.Length - 3)); //ID Prefix 부분 잘라주기
+            string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
+            int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
             int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
             arrivalAPIClass.FindStationInfoByID(busStationID);
 
