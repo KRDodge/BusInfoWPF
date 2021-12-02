@@ -58,7 +58,7 @@ namespace BusWpf.API
             {
                 System.Diagnostics.Debug.WriteLine(members["rtNm"]);
 
-                busDataList.SetBusArrivalTimeByBusName(members["rtNm"].ToString(),(int)members["exps1"]);
+                busDataList.SetBusArrivalTimeByBusName(members["rtNm"].ToString(),(int)members["neus1"]);
             }
         }
 

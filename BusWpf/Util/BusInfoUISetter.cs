@@ -7,8 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using BusWpf.Data;
 using System.Windows.Documents;
+using BusWpf.Data;
 
 namespace BusWpf.Util
 {
@@ -20,16 +20,15 @@ namespace BusWpf.Util
         {
             RichTextBox busInfoTextBlock = new RichTextBox();
             busInfoTextBlock.FontSize = 20;
+            busInfoTextBlock.IsReadOnly = true;
+            busInfoTextBlock.IsReadOnlyCaretVisible = false;
             BUSCOLOR busColor = _arrivalbusData.GetBusColor();
+
+
             Color color = GetBusColor(busColor);
-            busInfoTextBlock.Foreground = new SolidColorBrush(color);
-
-            TextBlock arrivalTime = new TextBlock();
-            arrivalTime.FontSize = 20;
-
             TextRange routeTextRange = new TextRange(busInfoTextBlock.Document.ContentEnd, busInfoTextBlock.Document.ContentEnd);
             routeTextRange.Text = _arrivalbusData.GetRouteName() + " ";
-            routeTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Blue);
+            routeTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(color));
             routeTextRange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
 
             TextRange lowTextRange = new TextRange(busInfoTextBlock.Document.ContentEnd, busInfoTextBlock.Document.ContentEnd);
@@ -40,18 +39,18 @@ namespace BusWpf.Util
                 lowTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.White); //space유지를 위해 문자열 지우는게 아닌 white처리해서 안보이게함
 
             TextRange fullTextRange = new TextRange(busInfoTextBlock.Document.ContentEnd, busInfoTextBlock.Document.ContentEnd);
-            lowTextRange.Text = "만차 ";
+            fullTextRange.Text = "만차 ";
             if (_arrivalbusData.IsFull())
                 fullTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
             else
                 fullTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.White); //space유지를 위해 문자열 지우는게 아닌 white처리해서 안보이게함
 
             TextRange lastTextRange = new TextRange(busInfoTextBlock.Document.ContentEnd, busInfoTextBlock.Document.ContentEnd);
-            lowTextRange.Text = "막차 ";
+            lastTextRange.Text = "막차 ";
             if (_arrivalbusData.IsLast())
-                fullTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
+                lastTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Black);
             else
-                fullTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.White); //space유지를 위해 문자열 지우는게 아닌 white처리해서 안보이게함
+                lastTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.White); //space유지를 위해 문자열 지우는게 아닌 white처리해서 안보이게함
 
             return busInfoTextBlock;
         }
@@ -60,6 +59,7 @@ namespace BusWpf.Util
         public TextBlock GetBusArrivalText(ArrivalBusData _arrivalbusData)
         {
             TextBlock arrivalTime = new TextBlock();
+            arrivalTime.FontSize = 20;
 
             //버스 시간이 int max값이면 정상 운행이 아니니 확인
             string busArriveTime = null;
@@ -80,7 +80,7 @@ namespace BusWpf.Util
         }
 
         //버스 색 지정해주는 함수.
-        //지정된 색을 enum으로 옮기고 parsing할때 들어오는 int 일일이 enum이랑 매칭시킬까 고민중
+        //지정된 색 값을 enum으로 옮기고 parsing할때 들어오는 int 일일이 enum이랑 매칭시킬까 고민중
         public Color GetBusColor(BUSCOLOR _busColor)
         {
             Color color;
@@ -101,8 +101,8 @@ namespace BusWpf.Util
                 color = (Color)ColorConverter.ConvertFromString("#E60012");
             else if (_busColor == BUSCOLOR.ICNBLUE)
                 color = (Color)ColorConverter.ConvertFromString("#0068B7");
-            else if (_busColor == BUSCOLOR.GYUGREEN)
-                color = (Color)ColorConverter.ConvertFromString("#009E96");
+            else if (_busColor == BUSCOLOR.GYURED)
+                color = (Color)ColorConverter.ConvertFromString("#E60012");
             else if (_busColor == BUSCOLOR.MSKYBLUE)
                 color = (Color)ColorConverter.ConvertFromString("#006896");
             else if (_busColor == BUSCOLOR.NSKYBLUE)

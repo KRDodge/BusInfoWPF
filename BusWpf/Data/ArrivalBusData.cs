@@ -133,11 +133,4 @@ namespace BusWpf.Data
         }
 
     }
-
-    internal class ListViewArrivalBusData
-    {
-
-        public string busRoute { get; set; }
-        public string busArrivalTime { get; set; }
-    }
 }
