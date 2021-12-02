@@ -42,8 +42,8 @@
             </ListView>
             <Grid Margin="0,500,0,0" VerticalAlignment="Top" Height="100" Width="300">
                 <TextBlock Text="갱신시간" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBox Name="PollingTextBlock" FontSize="20" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="100"/>
-                <Button Name="PollingButton" Content="적용" Margin="0,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" Width="50"/>
+                <TextBox Name="PollingTextBlock" Text="20" FontSize="20" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="100"/>
+                <Button Name="PollingButton" Content="적용" Margin="0,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" Width="50" Click="OnPollingButtonClick"/>
             </Grid>
             <Line X1="0" Y1="600" X2="300" Y2="600" Stroke="Black"/>
             <Grid Margin="0,600,0,0" VerticalAlignment="Top" Height="300" Width="300">

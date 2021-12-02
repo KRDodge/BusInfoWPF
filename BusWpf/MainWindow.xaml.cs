@@ -26,7 +26,6 @@ namespace BusWpf
     public partial class MainWindow : Window
     {
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -60,38 +59,72 @@ namespace BusWpf
         private void OnBusStationButtonClick(object sender, MouseButtonEventArgs e)
         {
             BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
-            BusStationInfo busStationInfo = new BusStationInfo();
+            BusStationInfoInstance busStationInfo = new BusStationInfoInstance();
 
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
             int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
-            int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
+            busStationInfo.SetBusStationIDbyARSID(busStationARSID);
+            int busStationID = busStationInfo.GetStationID();
             arrivalAPIClass.FindStationInfoByID(busStationID);
 
             updateBusArrivalList();
+
+            APIPollingTimerInstance pollingTimer = APIPollingTimerInstance.GetInstance();
+            int pollingTime;
+            try
+            {
+                pollingTime = int.Parse(PollingTextBlock.Text.ToString());
+            }
+            catch(Exception ex)
+            {
+                pollingTime = 60;
+            }
+            pollingTimer.SetPollingTimer(pollingTime);
+        }
+
+        //polling 버튼 선택
+        private void OnPollingButtonClick(object sender, RoutedEventArgs e)
+        {
+            APIPollingTimerInstance pollingTimer = APIPollingTimerInstance.GetInstance();
+            int pollingTime;
+            try
+            {
+                pollingTime = int.Parse(PollingTextBlock.Text.ToString());
+            }
+            catch (Exception ex)
+            {
+                pollingTime = 60;
+            }
+            pollingTimer.SetPollingTimer(pollingTime);
         }
 
         //정류장목록 지우기
         private void OnDeleteStationButtonClick(object sender, RoutedEventArgs e)
         {
             BusStationList.Items.RemoveAt(BusStationList.SelectedIndex);
-        }
-
-        private void OnLostConnectionTimer(object sender, EventArgs e)
-        {
-            
+            APIPollingTimerInstance pollingTimer = APIPollingTimerInstance.GetInstance();
+            pollingTimer.StopPollingTimer(); //polling timer 돌면서 문제 일으킬수도 있으니까 일단 stop
         }
 
         public void OnPollingTimer(object sender, EventArgs e)
         {
             BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
-            BusStationInfo busStationInfo = new BusStationInfo();
+            BusStationInfoInstance busStationInfo = BusStationInfoInstance.GetInstance();
 
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
             int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
-            int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
+            int busStationID = busStationInfo.GetStationID();
             arrivalAPIClass.UpdateStationInfoByID(busStationID);
 
             updateBusArrivalList();
+        }
+
+        private void OnLostConnectionTimer(object sender, EventArgs e)
+        {
+            if (BusArrivalList.Items.IsEmpty == false)
+                BusArrivalList.Items.Clear();
+
+            PollingTextBlock.Text = "통신불가";
         }
 
         private Border setStationName()

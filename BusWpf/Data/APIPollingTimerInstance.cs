@@ -40,6 +40,11 @@ namespace BusWpf.Data
             pollingTimer.Start();
         }
 
+        public void StopPollingTimer()
+        {
+            pollingTimer.Stop();
+        }
+
         private void OnPollingTimer_Tick(object sender, EventArgs e)
         {
             if (PollingTimerDone != null)

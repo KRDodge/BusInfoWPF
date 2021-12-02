@@ -7,14 +7,33 @@ using BusWpf.Data;
 
 namespace BusWpf.API
 {
-    public class BusStationInfo
+    public class BusStationInfoInstance
     {
-        public int GetBusStationIDbyARSID(int _arsID)
+        private static BusStationInfoInstance busStationInfoInstance;
+        private int stationID;
+
+        public BusStationInfoInstance()
+        {
+            intitialize();
+        }
+
+        private void intitialize()
+        {
+            stationID = -1;
+        }
+
+        public static BusStationInfoInstance GetInstance()
+        {
+            if (busStationInfoInstance == null)
+                busStationInfoInstance = new BusStationInfoInstance();
+            
+            return busStationInfoInstance; 
+        }
+
+        public void SetBusStationIDbyARSID(int _arsID)
         {
             BusStationDataInstance busStationData;
             busStationData = BusStationDataInstance.GetInstance();
-
-            int stationID = -1;
 
             List<int> busStationNameList = busStationData.GetStationARSIDList();
             for (int i = 0; i < busStationNameList.Count; ++i)
@@ -25,7 +44,10 @@ namespace BusWpf.API
                     break;
                 }
             }
+        }
 
+        public int GetStationID()
+        {
             return stationID;
         }
     }
