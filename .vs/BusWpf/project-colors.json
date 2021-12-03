@@ -5,7 +5,17 @@
       "ProjectGuid": "2e5fe411-e7e2-4c23-91d4-19c90f635a86",
       "DisplayName": "BusWpf",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "기타 파일",
+      "ColorIndex": -1
+    },
+    "1c84498f-9d07-4d22-b54c-cc88dc3aa3f2": {
+      "ProjectGuid": "1c84498f-9d07-4d22-b54c-cc88dc3aa3f2",
+      "DisplayName": "BusWPFAPI",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
