@@ -39,6 +39,8 @@ namespace BusWpf
 
             APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();
             lostConnectionTimer.LostConnectionTimerDone += OnLostConnectionTimer;
+
+            setClockTime();
         }
 
         //사용자의 입력 받기 (enter 키 누르면 확인)
@@ -62,10 +64,26 @@ namespace BusWpf
             BusStationInfoInstance busStationInfo = BusStationInfoInstance.GetInstance();
 
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
-            int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
+            int busStationARSID = 0;
+            try
+            {
+                busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
+            }
+            catch
+            {
+                //이렇게 할게 아니라 그냥 문자 입력 안되게 막아버리는게 나을듯?
+                StationIDTextBlock.Text = "잘못 된 역 번호"; 
+            }
             busStationInfo.SetBusStationIDbyARSID(busStationARSID);
             int busStationID = busStationInfo.GetStationID();
-            arrivalAPIClass.FindStationInfoByID(busStationID);
+            bool connected = arrivalAPIClass.FindStationInfoByID(busStationID);
+
+            APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();
+            if (connected)
+                lostConnectionTimer.StopLostConnectionTimer();
+            else
+                lostConnectionTimer.StartLostConnectionTimer();
+
 
             updateBusArrivalList();
 
@@ -114,7 +132,13 @@ namespace BusWpf
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
             int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
             int busStationID = busStationInfo.GetStationID();
-            arrivalAPIClass.UpdateStationInfoByID(busStationID);
+            bool connected = arrivalAPIClass.UpdateStationInfoByID(busStationID);
+
+            APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();
+            if (connected)
+                lostConnectionTimer.StopLostConnectionTimer();
+            else
+                lostConnectionTimer.StartLostConnectionTimer();
 
             updateBusArrivalList();
         }
@@ -174,6 +198,25 @@ namespace BusWpf
                 Border border = setter.SetBusDetailUI(dummyBusDataList[i]);
                 BusArrivalList.Items.Add(border);
             }
+        }
+
+        private void setClockTime()
+        {
+            DateTime time = DateTime.Now;
+
+            string timeText = null;
+            int hour = time.Hour;
+            if (hour < 12)
+            {
+                timeText = " 오전 " + hour.ToString("00") + ":" + time.Minute.ToString("00");    
+            }
+            else
+            {
+                hour -= 12;
+                timeText = " 오후 " + hour.ToString("00") + ":" + time.Minute.ToString("00");
+            }
+
+            Clock.Text = time.Year.ToString("00") + "-" + time.Month.ToString("00") + "-" + time.Day.ToString("00") + timeText;
         }
     }
 }

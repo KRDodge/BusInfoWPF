@@ -4,7 +4,6 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Net.Http;
 using System.IO;
 using BusWpf.Data;
 
@@ -14,17 +13,17 @@ namespace BusWpf.API
     public class BusStationArrivalAPI
     {
         //API 클래스 내부에서만 세팅됨
-        public void FindStationInfoByID(int _busStationID)
+        public bool FindStationInfoByID(int _busStationID)
         {
             if (_busStationID == -1)
-                return;
+                return false;
 
             ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
             busDataList.ClearArrivalBusDataList();
 
             JToken ItemJToken = getBusArrivalJToken(_busStationID);
-            if (ItemJToken == null)
-                return;
+            if (ItemJToken.Type == JTokenType.Null)
+                return false;
 
             foreach (JToken members in ItemJToken)
             {
@@ -41,18 +40,20 @@ namespace BusWpf.API
 
                 busDataList.AddArrivalBusDataList(busData);
             }
+
+            return true;
         }
 
-        public void UpdateStationInfoByID(int _busStationID)
+        public bool UpdateStationInfoByID(int _busStationID)
         {
             if (_busStationID == -1)
-                return;
+                return false;
 
             ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
 
             JToken ItemJToken = getBusArrivalJToken(_busStationID);
-            if (ItemJToken == null)
-                return;
+            if (ItemJToken.Type == JTokenType.Null)
+                return false;
 
             foreach (JToken members in ItemJToken)
             {
@@ -60,13 +61,15 @@ namespace BusWpf.API
 
                 busDataList.SetBusArrivalTimeByBusName(members["rtNm"].ToString(), members["arrmsg1"].ToString(), (int)members["neus1"]);
             }
+
+            return true;
         }
 
         private JToken getBusArrivalJToken(int _busStationID)
         {
             //정류장ID로 API에서 버스 정보 받아오기
             string url = "http://ws.bus.go.kr/api/rest/arrive/getLowArrInfoByStId"; // URL
-            url += "?ServiceKey=" + "0dpmdc2FE6BlxQH1ApIaxodKsJobGA9yu7qG4lTln1Y9WAXFJEu48Lsn1avbVzt3wrr%2FvBuiWYZITzi%2Bc6u%2Fzg%3D%3D"; // Service Key
+            url += "?ServiceKey=" + "v04713J3B4C%2F2LnbYgHFa4G84CIQOYWuD%2FWYd6bBUrbyALrVYUrOKeQ5m%2B9nTq6zGzrORvWAslQ5N5toYipiuw%3D%3D"; // Service Key
             url += "&resultType=json";
             url += "&stId=";
             url += _busStationID;

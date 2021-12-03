@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using BusWpf.Data;
-using BusWpf.Data;
 
 namespace BusWpf.Util
 {
