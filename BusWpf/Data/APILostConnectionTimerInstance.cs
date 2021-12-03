@@ -20,6 +20,7 @@ namespace BusWpf.Data
                 return;
 
             lostConnectionTimer.Interval = TimeSpan.FromSeconds(60);
+            lostConnectionTimer.Tick += new EventHandler(OnLostConnectionTimer_Tick);
             lostConnectionTimer.Start();
         }
 
@@ -42,7 +43,6 @@ namespace BusWpf.Data
         private void initialize()
         {
             lostConnectionTimer = new DispatcherTimer();
-            lostConnectionTimer.Tick += new EventHandler(OnLostConnectionTimer_Tick);
         }
 
         public static APILostConnectionTimerInstance GetInstance()

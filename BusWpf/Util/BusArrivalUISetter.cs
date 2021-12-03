@@ -5,12 +5,14 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using BusWPFAPI.BusWPFData.Arrival;
+using BusWpf.Data;
 
 namespace BusWpf.Util
 {
     internal class BusArrivalUISetter
     {
+
+
         //도착하는 버스 오름차순 정렬
         public List<ArrivalBusData> SortBusArrival(List<ArrivalBusData> _dataList)
         {

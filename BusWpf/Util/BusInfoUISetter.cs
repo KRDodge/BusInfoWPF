@@ -8,8 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Documents;
-using BusWPFAPI.BusWPFData.Arrival;
-using BusWPFAPI.BusWPFData.Enum;
+using BusWpf.Data;
 
 namespace BusWpf.Util
 {
