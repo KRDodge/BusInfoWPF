@@ -16,9 +16,16 @@ namespace BusWpf.Data
 
         public void StartLostConnectionTimer()
         {
-            lostConnectionTimer.Stop();
+            if (lostConnectionTimer.IsEnabled)
+                return;
+
             lostConnectionTimer.Interval = TimeSpan.FromSeconds(60);
             lostConnectionTimer.Start();
+        }
+
+        public void StopLostConnectionTimer()
+        {
+            lostConnectionTimer.Stop();
         }
 
         private void OnLostConnectionTimer_Tick(object sender, EventArgs e)

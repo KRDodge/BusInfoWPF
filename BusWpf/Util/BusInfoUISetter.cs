@@ -86,7 +86,7 @@ namespace BusWpf.Util
         //지정된 색 값을 enum으로 옮기고 parsing할때 들어오는 int 일일이 enum이랑 매칭시킬까 고민중
         public Color GetBusColor(BUSCOLOR _busColor)
         {
-            Color color;
+            Color color = new Color();
 
             if (_busColor == BUSCOLOR.WHITE)
                 color = (Color)ColorConverter.ConvertFromString("#FFFFFF");
