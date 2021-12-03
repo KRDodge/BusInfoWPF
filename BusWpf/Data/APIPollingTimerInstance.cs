@@ -22,6 +22,7 @@ namespace BusWpf.Data
         private void initialize()
         {
             pollingTimer = new DispatcherTimer();
+            pollingTimer.Tick += new EventHandler(OnPollingTimer_Tick);
         }
 
         public static APIPollingTimerInstance GetInstance()
@@ -36,7 +37,6 @@ namespace BusWpf.Data
         {
             pollingTimer.Stop();
             pollingTimer.Interval = TimeSpan.FromSeconds(_time);
-            pollingTimer.Tick += new EventHandler(OnPollingTimer_Tick);
             pollingTimer.Start();
         }
 

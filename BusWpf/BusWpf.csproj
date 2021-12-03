@@ -13,4 +13,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="BusWPFAPI">
+      <HintPath>..\BusWPFAPI\bin\Release\net6.0-windows\ref\BusWPFAPI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

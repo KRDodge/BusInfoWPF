@@ -1,0 +1,17 @@
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\bin\Release\net6.0-windows\BusWPFAPI.deps.json
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\bin\Release\net6.0-windows\BusWPFAPI.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\bin\Release\net6.0-windows\ref\BusWPFAPI.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\bin\Release\net6.0-windows\BusWPFAPI.pdb
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.csproj.AssemblyReference.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\UserControl1.g.cs
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI_MarkupCompile.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI_MarkupCompile.lref
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\UserControl1.baml
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.g.resources
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.AssemblyInfoInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.AssemblyInfo.cs
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.csproj.CoreCompileInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\ref\BusWPFAPI.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Release\net6.0-windows\BusWPFAPI.pdb

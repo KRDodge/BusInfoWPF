@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using BusWpf.API;
 using BusWpf.Data;
 using BusWpf.Util;
+using BusWPFAPI.BusStationAPI.Station;
+using BusWPFAPI.BusStationAPI.Arrival;
+using BusWPFAPI.BusWPFData.Arrival;
 
 namespace BusWpf
 {
