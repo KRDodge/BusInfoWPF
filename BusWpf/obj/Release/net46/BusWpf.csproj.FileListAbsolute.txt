@@ -1,6 +1,0 @@
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net46\BusWpf.csproj.AssemblyReference.cache
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net46\BusWpf.csproj.SuggestedBindingRedirects.cache
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net46\MainWindow.g.cs
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net46\App.g.cs
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net46\BusWpf_MarkupCompile.cache
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net46\BusWpf_MarkupCompile.lref

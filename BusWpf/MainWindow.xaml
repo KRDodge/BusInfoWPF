@@ -8,7 +8,7 @@
         Title="MainWindow" Height="900" Width="900">
     <Grid>
         <Grid Margin="0,0,0,0" HorizontalAlignment="Left" Height="900" Width="600">
-            <TextBlock Name="Clock" HorizontalAlignment="Left" FontSize="20" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" FontSize="20" Margin="20,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
             <ListView Name="BusArrivalList" Width="600" Margin="0,52,0,10" FontSize="16">
                 <ListView.View>
                     <GridView x:Name="BusArrivalGridView">

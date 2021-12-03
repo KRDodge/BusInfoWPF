@@ -1,15 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "cN1RMIgcBMjiBY6o17V1h7WVwFFm7LtXB6SAqPOoEtvz9+gSeCYyuNubI5fA5raM+BjNou6Ogj+MjA1/9rbjKg==",
+  "dgSpecHash": "wQyYwQa/4/l3dbjihtqgAts7adZd68P+/NobAiK9JGKqy/hoG4MQLE8nk/1+gXBT5VnjTot8fYzavQhWZh4MCw==",
   "success": true,
   "projectFilePath": "C:\\Users\\media\\Documents\\GitHub\\BusInfoWPF\\BusWpf\\BusWpf.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\media\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
     "C:\\Users\\media\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
     "C:\\Users\\media\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1000\\microsoft.office.interop.excel.15.0.4795.1000.nupkg.sha512",
     "C:\\Users\\media\\.nuget\\packages\\mvvmlight\\5.4.1.1\\mvvmlight.5.4.1.1.nupkg.sha512",
-    "C:\\Users\\media\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512",
     "C:\\Users\\media\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "프로젝트 대상 프레임워크 'net6.0-windows7.0' 대신 '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8'을(를) 사용하여 패키지 'Microsoft.Office.Interop.Excel 15.0.4795.1000'을(를) 복원했습니다. 이 패키지는 프로젝트와 완벽하게 호환되지 않을 수 있습니다.",
+      "libraryId": "Microsoft.Office.Interop.Excel",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
 }
