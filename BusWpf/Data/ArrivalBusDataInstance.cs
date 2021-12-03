@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusWPFAPI.BusWPFData.Arrival;
+using BusWPFAPI.BusStationAPI.Arrival;
+
+//도착하는 버스 목록을 관리하는 클래스
 
 namespace BusWpf.Data
 {
     internal class ArrivalBusDataInstance
-    {
-        private List<ArrivalBusData> arrivalBusDataList;
-
+    { 
         private static ArrivalBusDataInstance arrivalBusDataInstance;
+        private List<ArrivalBusData> arrivalBusDataList;
 
         public ArrivalBusDataInstance()
         {
@@ -69,6 +72,33 @@ namespace BusWpf.Data
                 }
             }
             return arrivalBusData;
+        }
+
+        //API에서 StationID로 도착예정버스들 받아온 후 arrivalBusDataList에 저장
+        public bool FindStationInfoByID(int _stationID)
+        {
+            bool succes = false; //coonection 잘 됐는지 확인
+            arrivalBusDataList.Clear();
+            BusStationArrivalAPI arrivalAPI = new BusStationArrivalAPI();
+            arrivalBusDataList = arrivalAPI.FindStationInfoByID(_stationID);
+
+            if (arrivalBusDataList.Count > 0)
+                succes = true;
+
+            return succes;
+        }
+
+        //API에서 StationID로 도착예정버스들 받아온 후 arrivalBusDataList에 저장
+        public bool UpdateStationInfoByID(int _stationID)
+        {
+            bool succes = false; //coonection 잘 됐는지 확인
+            BusStationArrivalAPI arrivalAPI = new BusStationArrivalAPI();
+            arrivalBusDataList = arrivalAPI.UpdateStationInfoByID(_stationID, arrivalBusDataList);
+
+            if (arrivalBusDataList.Count > 0)
+                succes = true;
+
+            return succes;
         }
     }
 }

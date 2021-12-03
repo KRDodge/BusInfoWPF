@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusWPFAPI.BusStationAPI.Station;
+using BusWPFAPI.BusWPFData.Station;
 
-namespace BusWpf.Data
+namespace BusWpf.API
 {
-    internal class BusStationDataInstance
+    public class BusStationDataInstance
     {
         private List<int> stationIDList;
         private List<int> stationARSIDList;
@@ -27,6 +29,27 @@ namespace BusWpf.Data
             if (busStationDataInstance == null)
                 busStationDataInstance = new BusStationDataInstance();
             return busStationDataInstance;
+        }
+
+        public void SetBusStationDatabyCSV()
+        {
+            BusStationCSV busStationCSV = new BusStationCSV();
+            stationData = busStationCSV.GetBusStationInfobyCSV();
+        }
+
+        public int GetBusStationIDbyARSID(int _arsID)
+        {
+            int stationID = -1;
+                List<int> busStationNameList = stationData.GetStationARSIDList();
+            for (int i = 0; i < busStationNameList.Count; ++i)
+            {
+                if (busStationNameList[i] == _arsID)
+                {
+                    stationID = stationData.GetStationIDList()[i];
+                    break;
+                }
+            }
+            return stationID;
         }
     }
 }

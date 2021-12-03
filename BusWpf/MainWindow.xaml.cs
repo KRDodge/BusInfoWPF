@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using BusWpf.API;
 using BusWpf.Data;
 using BusWpf.Util;
+using BusWPFAPI.BusStationAPI.Arrival;
+using BusWPFAPI.BusWPFData.Arrival;
 
 namespace BusWpf
 {
@@ -31,8 +33,8 @@ namespace BusWpf
             InitializeComponent();
 
             //일단 Csv파일로 정류장 정보 읽어온다. 이것도 API있으면 그걸로 변경 예정
-            BusStationCSV busStationCSV = new BusStationCSV();
-            busStationCSV.GetBusStationInfobyCSV();
+            BusStationDataInstance busStationData = new BusStationDataInstance();
+            busStationData.SetBusStationDatabyCSV();
 
             APIPollingTimerInstance pollingTimer = APIPollingTimerInstance.GetInstance();
             pollingTimer.PollingTimerDone += OnPollingTimer;
@@ -60,8 +62,8 @@ namespace BusWpf
         //API에서 선택한 정류장의 버스도착정보 가져오기
         private void OnBusStationButtonClick(object sender, MouseButtonEventArgs e)
         {
-            BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
-            BusStationInfoInstance busStationInfo = BusStationInfoInstance.GetInstance();
+            ArrivalBusDataInstance arrivalAPIClass = ArrivalBusDataInstance.GetInstance();
+            BusStationDataInstance busStationInfo = BusStationDataInstance.GetInstance();
 
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
             int busStationARSID = 0;
@@ -74,8 +76,7 @@ namespace BusWpf
                 //이렇게 할게 아니라 그냥 문자 입력 안되게 막아버리는게 나을듯?
                 StationIDTextBlock.Text = "잘못 된 역 번호"; 
             }
-            busStationInfo.SetBusStationIDbyARSID(busStationARSID);
-            int busStationID = busStationInfo.GetStationID();
+            int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
             bool connected = arrivalAPIClass.FindStationInfoByID(busStationID);
 
             APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();
@@ -126,12 +127,12 @@ namespace BusWpf
 
         public void OnPollingTimer(object sender, EventArgs e)
         {
-            BusStationArrivalAPI arrivalAPIClass = new BusStationArrivalAPI();
-            BusStationInfoInstance busStationInfo = BusStationInfoInstance.GetInstance();
+            ArrivalBusDataInstance arrivalAPIClass = ArrivalBusDataInstance.GetInstance();
+            BusStationDataInstance busStationInfo = BusStationDataInstance.GetInstance();
 
             string busStationARSString = (BusStationList.Items.GetItemAt(BusStationList.SelectedIndex) as Border).Name.ToString(); //이게 최선인가? 나중에 방법 더 찾아보기
             int busStationARSID = int.Parse(busStationARSString.Substring(2, busStationARSString.Length - 2)); //ID Prefix 부분 잘라주기
-            int busStationID = busStationInfo.GetStationID();
+            int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
             bool connected = arrivalAPIClass.UpdateStationInfoByID(busStationID);
 
             APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();

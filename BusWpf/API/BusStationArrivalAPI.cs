@@ -13,8 +13,10 @@ namespace BusWpf.API
     public class BusStationArrivalAPI
     {
         //API 클래스 내부에서만 세팅됨
-        public bool FindStationInfoByID(int _busStationID)
+        public List<ArrivalBusData> FindStationInfoByID(int _busStationID)
         {
+            List<ArrivalBusData> busDataList = new List<ArrivalBusData>();
+
             if (_busStationID == -1)
                 return false;
 
