@@ -16,9 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="BusApi">
-      <HintPath>..\BusApi\bin\Release\net6.0\ref\BusApi.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\BusApi\BusApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CSV\BusData.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

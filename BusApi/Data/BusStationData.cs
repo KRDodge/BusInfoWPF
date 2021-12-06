@@ -4,12 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusApi
-{
-namespace Data
-{
-namespace Station
-{
+namespace BusApi.Data
+{ 
 
     public class BusStationData
     {
@@ -32,6 +28,4 @@ namespace Station
             stationNameList = new List<string>();
         }
     }
-}
-}
 }

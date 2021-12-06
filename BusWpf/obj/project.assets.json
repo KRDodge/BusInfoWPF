@@ -31,6 +31,19 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "BusApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "bin/placeholder/BusApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BusApi.dll": {}
+        }
       }
     }
   },
@@ -111,10 +124,16 @@
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "packageIcon.png"
       ]
+    },
+    "BusApi/1.0.0": {
+      "type": "project",
+      "path": "../BusApi/BusApi.csproj",
+      "msbuildProject": "../BusApi/BusApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "BusApi >= 1.0.0",
       "ExcelDataReader >= 3.6.0",
       "Microsoft.Office.Interop.Excel >= 15.0.4795.1000",
       "MvvmLight >= 5.4.1.1",
@@ -152,7 +171,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\media\\Documents\\GitHub\\BusInfoWPF\\BusApi\\BusApi.csproj": {
+              "projectPath": "C:\\Users\\media\\Documents\\GitHub\\BusInfoWPF\\BusApi\\BusApi.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,9 +1,5 @@
-﻿namespace BusApi
-{
-namespace Data
-{
-namespace Enum
-{
+﻿namespace BusApi.Data
+{ 
 
     public enum BUSCOLOR //BusInfoUISetter::GetBusColor()에서 색 설정중
     {
@@ -29,6 +25,4 @@ namespace Enum
         CLOSED,         //운행종료
         NONE,
     }
-}
-}
 }

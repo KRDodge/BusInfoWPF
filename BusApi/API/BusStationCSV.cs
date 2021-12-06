@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using BusApi.Data.Station;
+using BusApi.Data;
 
-namespace BusApi
-{
-namespace Api
-{
-namespace CSV
+namespace BusApi.Api
 {
                 
     public class BusStationCSV
@@ -21,7 +17,7 @@ namespace CSV
 
             try
             {
-                StreamReader reader = new StreamReader(File.OpenRead(@"C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\API\BusData.csv"));
+                StreamReader reader = new StreamReader(File.OpenRead(Directory.GetCurrentDirectory() + @"\CSV\BusData.csv"));
                 reader.ReadLine(); //csv에 있는 첫 열 날리기 (header정보)
                     
                 List<int> stationIDList = new List<int>();
@@ -52,6 +48,4 @@ namespace CSV
             return busStationData;
         }
     }
-}
-}
 }

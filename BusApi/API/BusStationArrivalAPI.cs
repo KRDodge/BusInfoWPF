@@ -5,13 +5,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.IO;
-using BusApi.Data.Arrival;
+using BusApi.Data;
 
-namespace BusApi
-{
-namespace Api
-{
-namespace Station
+namespace BusApi.Api
 {
 
     public class BusStationArrivalAPI
@@ -121,6 +117,4 @@ namespace Station
             }
         }
     }
-}
-}
 }

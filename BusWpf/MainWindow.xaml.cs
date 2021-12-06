@@ -17,7 +17,7 @@ using BusWpf.API;
 using BusWpf.Data;
 using BusWpf.Util;
 
-using BusApi.Data.Arrival;
+using BusApi.Data;
 
 namespace BusWpf
 {

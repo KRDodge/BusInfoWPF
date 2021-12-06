@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusApi.Data.Enum;
 
-namespace BusApi
-{
-namespace Data
-{
-namespace Arrival
+namespace BusApi.Data
 {
 
     public class ArrivalBusData
@@ -139,6 +134,4 @@ namespace Arrival
         }
 
     }
-}
-}
 }
