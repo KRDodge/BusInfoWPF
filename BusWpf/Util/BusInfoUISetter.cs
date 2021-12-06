@@ -71,8 +71,10 @@ namespace BusWpf.Util
             string busArriveTime = null;
             if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.CLOSED)
                 busArriveTime = "운행종료";
-            else if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.WAITING)
+            else if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.WAITINGSTART)
                 busArriveTime = "출발대기";
+            else if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.WAITINGRETURN)
+                busArriveTime = "회차대기";
             else if (_arrivalbusData.IsRunning() == RUNNINGSTATUS.RUNNING)
             {
                 int minute = _arrivalbusData.GetBusArrivalTime() / 60;

@@ -40,7 +40,7 @@ namespace BusApi.Data
             busArrivalMessage = _busArrival;
             
             //도착하는 버스 시간순 - 출발대기 - 운행종료순으로 정렬하기 위해
-            //운행종료는 intmax, 출발대기는 intmax-1로 저장
+            //운행종료는 intmax, 출발대기는 intmax-1, 회차대기는 intmax-2 로 저장
             if (busArrivalMessage == "운행종료")
             {
                 SetBusArrivalTime(int.MaxValue);
@@ -49,7 +49,12 @@ namespace BusApi.Data
             else if (busArrivalMessage == "출발대기")
             {
                 SetBusArrivalTime(int.MaxValue - 1);
-                SetIsRunning(RUNNINGSTATUS.WAITING);
+                SetIsRunning(RUNNINGSTATUS.WAITINGSTART);
+            }
+            else if(busArrivalMessage=="회차대기")
+            {
+                SetBusArrivalTime(int.MaxValue - 2);
+                SetIsRunning(RUNNINGSTATUS.WAITINGRETURN);
             }
             else
             {

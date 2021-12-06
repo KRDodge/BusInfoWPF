@@ -83,12 +83,13 @@ namespace BusWpf
             int busStationID = busStationInfo.GetBusStationIDbyARSID(busStationARSID);
             bool connected = arrivalAPIClass.FindStationInfoByID(busStationID);
 
-            APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();
-            if (connected)
-                lostConnectionTimer.StopLostConnectionTimer();
-            else
-                lostConnectionTimer.StartLostConnectionTimer();
-
+            if (connected == false)
+            {
+                StationIDTextBlock.Text = "정류장 없음";
+                if (BusArrivalList.Items.IsEmpty == false)
+                    BusArrivalList.Items.Clear();
+                return;
+            }
 
             updateBusArrivalList();
 

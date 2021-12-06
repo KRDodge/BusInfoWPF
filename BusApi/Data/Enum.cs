@@ -21,8 +21,9 @@
     public enum RUNNINGSTATUS
     {
         RUNNING = 0,    //운행중
-        WAITING,        //출발대기
+        WAITINGSTART,        //출발대기
         CLOSED,         //운행종료
+        WAITINGRETURN,
         NONE,
     }
 }
