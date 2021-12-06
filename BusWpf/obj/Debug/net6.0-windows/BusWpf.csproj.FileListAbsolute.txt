@@ -32,7 +32,6 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net6.0-windows\BusWp
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net6.0-windows\ExcelDataReader.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net6.0-windows\Microsoft.Office.Interop.Excel.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf.csproj.AssemblyReference.cache
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf_MarkupCompile.cache
@@ -48,3 +47,5 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWp
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\ref\BusWpf.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf.pdb
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf.genruntimeconfig.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net6.0-windows\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf.csproj.AssemblyReference.cache

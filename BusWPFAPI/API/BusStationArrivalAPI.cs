@@ -5,34 +5,36 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.IO;
-using BusWpf.Data;
+using BusWpfApi.BusData.Arrival;
 
-
-namespace BusWpf.API
+namespace BusWpfApi
 {
+namespace BusApi
+{
+namespace Station
+{
+
     public class BusStationArrivalAPI
     {
+        List<ArrivalBusData> busDataList;
         //API 클래스 내부에서만 세팅됨
         public List<ArrivalBusData> FindStationInfoByID(int _busStationID)
         {
-            List<ArrivalBusData> busDataList = new List<ArrivalBusData>();
+            busDataList = new List<ArrivalBusData>();
 
             if (_busStationID == -1)
-                return false;
-
-            ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
-            busDataList.ClearArrivalBusDataList();
+                return busDataList;
 
             JToken ItemJToken = getBusArrivalJToken(_busStationID);
             if (ItemJToken.Type == JTokenType.Null)
-                return false;
+                return busDataList;
 
             foreach (JToken members in ItemJToken)
             {
                 System.Diagnostics.Debug.WriteLine(members["rtNm"]);
                 ArrivalBusData busData = new ArrivalBusData();
 
-                busData.SetBusRoute(members["rtNm"].ToString()); 
+                busData.SetBusRoute(members["rtNm"].ToString());
                 busData.SetBusArrivalTime((int)members["neus1"]);
                 busData.SetBusArrivalMessage(members["arrmsg1"].ToString());
                 busData.SetLowBus((int)members["busType1"]);
@@ -40,31 +42,31 @@ namespace BusWpf.API
                 busData.SetIsFull((int)members["full1"]);
                 busData.SetIsLast((int)members["isLast1"]);
 
-                busDataList.AddArrivalBusDataList(busData);
+                busDataList.Add(busData);
             }
 
-            return true;
+            return busDataList;
         }
 
-        public bool UpdateStationInfoByID(int _busStationID)
+        public List<ArrivalBusData> UpdateStationInfoByID(int _busStationID)
         {
-            if (_busStationID == -1)
-                return false;
+            busDataList = new List<ArrivalBusData>();
 
-            ArrivalBusDataInstance busDataList = ArrivalBusDataInstance.GetInstance();
+            if (_busStationID == -1)
+                return busDataList;
 
             JToken ItemJToken = getBusArrivalJToken(_busStationID);
             if (ItemJToken.Type == JTokenType.Null)
-                return false;
+                return busDataList;
 
             foreach (JToken members in ItemJToken)
             {
                 System.Diagnostics.Debug.WriteLine(members["rtNm"]);
 
-                busDataList.SetBusArrivalTimeByBusName(members["rtNm"].ToString(), members["arrmsg1"].ToString(), (int)members["neus1"]);
+                setBusArrivalTimeByBusName(members["rtNm"].ToString(), members["arrmsg1"].ToString(), (int)members["neus1"]);
             }
 
-            return true;
+            return busDataList;
         }
 
         private JToken getBusArrivalJToken(int _busStationID)
@@ -94,5 +96,20 @@ namespace BusWpf.API
 
             return ItemJToken;
         }
+
+        public void setBusArrivalTimeByBusName(string _routeName, string _message, int _time)
+        {
+            for (int i = 0; i < busDataList.Count; ++i)
+            {
+                if (busDataList[i].GetRouteName() == _routeName)
+                {
+                    busDataList[i].SetBusArrivalTime(_time);
+                    busDataList[i].SetBusArrivalMessage(_message);
+                    return;
+                }
+            }
+        }
     }
+}
+}
 }

@@ -1,0 +1,11 @@
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\x64\Release\net6.0\BusApi.deps.json
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\x64\Release\net6.0\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\x64\Release\net6.0\ref\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\x64\Release\net6.0\BusApi.pdb
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\BusApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\BusApi.AssemblyInfoInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\BusApi.AssemblyInfo.cs
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\BusApi.csproj.CoreCompileInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\ref\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\x64\Release\net6.0\BusApi.pdb

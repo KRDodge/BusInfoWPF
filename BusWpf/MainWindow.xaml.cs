@@ -16,8 +16,8 @@ using System.Windows.Shapes;
 using BusWpf.API;
 using BusWpf.Data;
 using BusWpf.Util;
-using BusWPFAPI.BusStationAPI.Arrival;
-using BusWPFAPI.BusWPFData.Arrival;
+
+using BusApi.Data.Arrival;
 
 namespace BusWpf
 {
@@ -33,7 +33,7 @@ namespace BusWpf
             InitializeComponent();
 
             //일단 Csv파일로 정류장 정보 읽어온다. 이것도 API있으면 그걸로 변경 예정
-            BusStationDataInstance busStationData = new BusStationDataInstance();
+            BusStationDataInstance busStationData = BusStationDataInstance.GetInstance();
             busStationData.SetBusStationDatabyCSV();
 
             APIPollingTimerInstance pollingTimer = APIPollingTimerInstance.GetInstance();
@@ -112,6 +112,7 @@ namespace BusWpf
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 pollingTime = 60;
             }
             pollingTimer.SetPollingTimer(pollingTime);

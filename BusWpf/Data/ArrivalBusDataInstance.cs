@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusWPFAPI.BusWPFData.Arrival;
-using BusWPFAPI.BusStationAPI.Arrival;
+using BusApi.Data.Arrival;
+using BusApi.Api.Station;
 
 //도착하는 버스 목록을 관리하는 클래스
 

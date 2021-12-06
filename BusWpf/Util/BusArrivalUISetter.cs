@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using BusWpf.Data;
+using BusApi.Data.Arrival;
 
 namespace BusWpf.Util
 {

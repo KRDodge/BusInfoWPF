@@ -15,7 +15,17 @@
       "ProjectGuid": "1c84498f-9d07-4d22-b54c-cc88dc3aa3f2",
       "DisplayName": "BusWPFAPI",
       "ColorIndex": 1
+    },
+    "cd89bfa2-af00-49f8-b239-138d2f1620a7": {
+      "ProjectGuid": "cd89bfa2-af00-49f8-b239-138d2f1620a7",
+      "DisplayName": "BusWPFAPI",
+      "ColorIndex": 2
+    },
+    "fefdde75-985b-41f0-8437-74f8e5e0237f": {
+      "ProjectGuid": "fefdde75-985b-41f0-8437-74f8e5e0237f",
+      "DisplayName": "BusApi",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusWpfApi.BusData.Enum;
 
-namespace BusWpf.Data
+namespace BusWpfApi
 {
-    internal class ArrivalBusData
+namespace BusData
+{
+namespace Arrival
+{
+
+    public class ArrivalBusData
     {
         private string busRoute;    //버스 번호
         private string busArrivalMessage; //도착 메세지 (이걸로 운행여부 및 도착 시간 추출)
@@ -32,18 +38,18 @@ namespace BusWpf.Data
 
 
         public void SetBusRoute(string _busRoute) { busRoute = _busRoute; }
-        public void SetBusArrivalMessage(string _busArrival) 
-        { 
+        public void SetBusArrivalMessage(string _busArrival)
+        {
             busArrivalMessage = _busArrival;
-            
-            if(busArrivalMessage == "운행종료")
+
+            if (busArrivalMessage == "운행종료")
             {
                 SetBusArrivalTime(int.MaxValue);
                 SetIsRunning(RUNNINGSTATUS.CLOSED);
             }
-            else if(busArrivalMessage == "출발대기")
+            else if (busArrivalMessage == "출발대기")
             {
-                SetBusArrivalTime(int.MaxValue-1);
+                SetBusArrivalTime(int.MaxValue - 1);
                 SetIsRunning(RUNNINGSTATUS.WAITING);
             }
             else
@@ -69,17 +75,17 @@ namespace BusWpf.Data
             }
         }
 
-        public void SetBusColor(int _busColor) 
+        public void SetBusColor(int _busColor)
         {
             string busRouteColor = null;
-            if(busRoute.Length != 0 )
+            if (busRoute.Length != 0)
                 busRouteColor = busRoute.Substring(0, 1);
 
-            if(busRouteColor == "M") //M버스면 노선상관없이 광역급행버스 색
+            if (busRouteColor == "M") //M버스면 노선상관없이 광역급행버스 색
             {
                 busColor = BUSCOLOR.MSKYBLUE;
             }
-            else if(busRouteColor == "G") //G버스면 노선상관없이 광역버스 색
+            else if (busRouteColor == "G") //G버스면 노선상관없이 광역버스 색
             {
                 busColor = BUSCOLOR.RED;
             }
@@ -133,4 +139,6 @@ namespace BusWpf.Data
         }
 
     }
+}
+}
 }

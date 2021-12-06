@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusWpf.Data;
 using System.IO;
+using BusWpfApi.BusData.Station;
 
-namespace BusWpf.API
+namespace BusWpfApi
 {
-    internal class BusStationCSV
+namespace BusApi
+{
+namespace CSV
+{
+                
+    public class BusStationCSV
     {
-        public void GetBusStationInfobyCSV()
+        public BusStationData GetBusStationInfobyCSV()
         {
-            BusStationDataInstance busStationData;
-            busStationData = BusStationDataInstance.GetInstance();
+            BusStationData busStationData = new BusStationData();
 
             try
             {
                 StreamReader reader = new StreamReader(File.OpenRead(@"C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\API\BusData.csv"));
                 reader.ReadLine(); //csv에 있는 첫 열 날리기 (header정보)
-
+                    
                 List<int> stationIDList = new List<int>();
                 List<int> stationARSIDList = new List<int>();
                 List<string> stationNameList = new List<string>();
@@ -45,6 +49,9 @@ namespace BusWpf.API
                 Console.WriteLine(ex.Message);
             }
 
+            return busStationData;
         }
     }
+}
+}
 }

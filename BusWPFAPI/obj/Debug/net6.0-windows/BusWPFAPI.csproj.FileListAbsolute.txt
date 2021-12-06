@@ -1,0 +1,4 @@
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Debug\net6.0-windows\BusWPFAPI.csproj.AssemblyReference.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Debug\net6.0-windows\UserControl1.g.cs
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Debug\net6.0-windows\BusWPFAPI_MarkupCompile.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWPFAPI\obj\Debug\net6.0-windows\BusWPFAPI_MarkupCompile.lref

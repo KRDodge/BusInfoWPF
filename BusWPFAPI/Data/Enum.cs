@@ -1,5 +1,10 @@
-﻿namespace BusWpf.Data
+﻿namespace BusWpfApi
 {
+namespace BusData
+{
+namespace Enum
+{
+
     public enum BUSCOLOR //BusInfoUISetter::GetBusColor()에서 색 설정중
     {
         WHITE = 0,      //공용버스 
@@ -24,4 +29,6 @@
         CLOSED,         //운행종료
         NONE,
     }
+}
+}
 }

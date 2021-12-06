@@ -9,8 +9,10 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net48\GalaSoft.MvvmL
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net48\GalaSoft.MvvmLight.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net48\System.Windows.Interactivity.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net48\Newtonsoft.Json.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net48\BusApi.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net48\BusWpf.csproj.AssemblyReference.cache
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net48\BusWpf.csproj.SuggestedBindingRedirects.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net48\BusWpf.exe.config
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net48\MainWindow.g.cs
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net48\App.g.cs
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net48\BusWpf_MarkupCompile.cache

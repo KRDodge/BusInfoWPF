@@ -1,0 +1,4 @@
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Debug\net48\BusApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Debug\net48\BusApi.AssemblyInfoInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Debug\net48\BusApi.AssemblyInfo.cs
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Debug\net48\BusApi.csproj.CoreCompileInputs.cache

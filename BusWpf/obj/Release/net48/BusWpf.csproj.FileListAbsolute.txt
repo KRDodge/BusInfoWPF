@@ -23,3 +23,6 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net48\BusWpf.cspro
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net48\BusWpf.csproj.CopyComplete
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net48\BusWpf.exe
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net48\BusWpf.pdb
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net48\BusWpf.csproj.AssemblyReference.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net48\BusWpf.exe.config
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Release\net48\BusApi.dll
