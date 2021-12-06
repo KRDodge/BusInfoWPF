@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 using BusWpf.API;
 using BusWpf.Data;
@@ -36,16 +37,18 @@ namespace BusWpf
             BusStationDataInstance busStationData = BusStationDataInstance.GetInstance();
             busStationData.SetBusStationDatabyCSV();
 
+
+            //타이머 Event설정
             APIPollingTimerInstance pollingTimer = APIPollingTimerInstance.GetInstance();
             pollingTimer.PollingTimerDone += OnPollingTimer;
 
             APILostConnectionTimerInstance lostConnectionTimer = APILostConnectionTimerInstance.GetInstance();
             lostConnectionTimer.LostConnectionTimerDone += OnLostConnectionTimer;
 
-            setClockTime();
+            setClock();
         }
 
-        //사용자의 입력 받기 (enter 키 누르면 확인)
+        //사용자의 입력 받기 (AddStation(추가 키) 누루면 호출)
         private void OnAddStationButtonClick(object sender, RoutedEventArgs e)
         {
             if (StationDescriptionTextBlock.Text == "" || StationIDTextBlock.Text == "")
@@ -59,6 +62,7 @@ namespace BusWpf
             StationIDTextBlock.Clear();
         }
 
+        //추가한 버스정류장(Bus Station) 클릭하면 호출
         //API에서 선택한 정류장의 버스도착정보 가져오기
         private void OnBusStationButtonClick(object sender, MouseButtonEventArgs e)
         {
@@ -126,6 +130,7 @@ namespace BusWpf
             pollingTimer.StopPollingTimer(); //polling timer 돌면서 문제 일으킬수도 있으니까 일단 stop
         }
 
+        //폴링 타이머 불릴 때 도착 정보 업데이트해줌
         public void OnPollingTimer(object sender, EventArgs e)
         {
             ArrivalBusDataInstance arrivalAPIClass = ArrivalBusDataInstance.GetInstance();
@@ -145,6 +150,7 @@ namespace BusWpf
             updateBusArrivalList();
         }
 
+        //LostConnectionTimer 다 돌았을 때 (마지막으로 통신불가 후 60초  지났을 때)호출
         private void OnLostConnectionTimer(object sender, EventArgs e)
         {
             if (BusArrivalList.Items.IsEmpty == false)
@@ -153,6 +159,7 @@ namespace BusWpf
             PollingTextBlock.Text = "통신불가";
         }
 
+        //정류장 이름 StationTextBox에서 추출해서 설정해줌
         private Border setStationName()
         {
             StackPanel stack = new StackPanel();
@@ -179,6 +186,7 @@ namespace BusWpf
             return border;
         }
 
+        //도착되는 버스 정보 업데이트
         private void updateBusArrivalList()
         {
             if (BusArrivalList.Items.IsEmpty == false)
@@ -202,7 +210,17 @@ namespace BusWpf
             }
         }
 
-        private void setClockTime()
+        //시계 시간 클래스
+        private void setClock()
+        {
+            DispatcherTimer clockTimer = new DispatcherTimer();
+            clockTimer.Tick += new EventHandler(OnClockTimer);
+            clockTimer.Interval = new TimeSpan(0, 0, 1);
+            clockTimer.Start();
+        }
+
+        //시간 업데이트
+        private void OnClockTimer(object sender, EventArgs e)
         {
             DateTime time = DateTime.Now;
 

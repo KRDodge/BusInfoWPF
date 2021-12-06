@@ -1,4 +1,8 @@
-﻿using System;
+﻿//연결 끊김 타이머 인스턴스
+//해당 타이머가 60을 찍으면 연결실패
+//PollingTimer가 돌았을 때 버스 데이터를 받아오지 못하면 시작
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

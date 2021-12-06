@@ -1,4 +1,6 @@
-﻿using System;
+﻿//도착하는 버스 정보 서버에서 받아오고 parsing하는 클래스
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -24,7 +26,7 @@ namespace BusApi.Api
             busDataList = new List<ArrivalBusData>();
         }
 
-        //API 클래스 내부에서만 세팅됨
+        //버스정류장ID로 버스정류장에 들어오는 버스 정보들 찾기 
         public List<ArrivalBusData> FindStationInfoByID(int _busStationID)
         {
             busDataList = new List<ArrivalBusData>();
@@ -55,6 +57,8 @@ namespace BusApi.Api
             return busDataList;
         }
 
+        //버스정류장ID로 버스정류장에 들어오는 버스 정보 업데이트
+        //기존에 있던 버스정류장에 도착하는 버스 정보 리스트 보내줘서 해당 리스트에 세팅
         public List<ArrivalBusData> UpdateStationInfoByID(int _busStationID, List<ArrivalBusData> _busDataList)
         {
             busDataList = _busDataList;
@@ -76,6 +80,7 @@ namespace BusApi.Api
             return busDataList;
         }
 
+        //Json파일에서 필요한 정보 추출하는 함수
         private JToken getBusArrivalJToken(int _busStationID)
         {
             //정류장ID로 API에서 버스 정보 받아오기
@@ -104,6 +109,7 @@ namespace BusApi.Api
             return ItemJToken;
         }
 
+        //노선번호에 맞는 도착시간 세팅
         public void setBusArrivalTimeByBusName(string _routeName, string _message, int _time)
         {
             for (int i = 0; i < busDataList.Count; ++i)

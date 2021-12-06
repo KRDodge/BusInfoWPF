@@ -1,4 +1,9 @@
-﻿using System;
+﻿//버스 정류장 정보모음 클래스
+//CSV파일 긁어온거 저장
+//일반인이 버스정류장에서 보는 ID와 API에서 처리하는 ID가 다름
+//일반인이 보는 ID는 ARSID ex)종로2가사거리의 ARSID는 01001, 실제 ID는 100000001
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

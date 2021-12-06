@@ -1,12 +1,12 @@
-﻿using System;
+﻿//도착하는 버스 목록을 관리하는 클래스
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusApi.Data;
 using BusApi.Api;
-
-//도착하는 버스 목록을 관리하는 클래스
 
 namespace BusWpf.Data
 {

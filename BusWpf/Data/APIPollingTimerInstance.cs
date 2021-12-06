@@ -1,4 +1,7 @@
-﻿using System;
+﻿//폴링(리프레시) 타이머 클래스
+//사용자가 설정한 타이머 시간이 되면 정류장에 도착하는 버스 정보 Update
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿//처음 시작할 때 버스 정류장 정보 CSV파일 읽어오는 클래스
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,8 @@ namespace BusApi.Api
                 
     public class BusStationCSV
     {
+        //CSV파일에서 버스 정보 읽어와서 return해주는 함수
+        //CSV파일 설치 폴더에 같이 들어가도록 설정
         public BusStationData GetBusStationInfobyCSV()
         {
             BusStationData busStationData = new BusStationData();

@@ -50,3 +50,4 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWp
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\ref\BusWpf.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf.pdb
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net6.0-windows\BusWpf.genruntimeconfig.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\bin\Debug\net6.0-windows\CSV\BusData.csv

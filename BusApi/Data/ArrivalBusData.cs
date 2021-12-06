@@ -1,4 +1,6 @@
-﻿using System;
+﻿//버스 정보 클래스
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +38,9 @@ namespace BusApi.Data
         public void SetBusArrivalMessage(string _busArrival)
         {
             busArrivalMessage = _busArrival;
-
+            
+            //도착하는 버스 시간순 - 출발대기 - 운행종료순으로 정렬하기 위해
+            //운행종료는 intmax, 출발대기는 intmax-1로 저장
             if (busArrivalMessage == "운행종료")
             {
                 SetBusArrivalTime(int.MaxValue);
@@ -56,6 +60,7 @@ namespace BusApi.Data
 
         public void SetLowBus(int _isLowBus)
         {
+            //일반버스는 0, 저상버스는 1, 연결버스는 2
             if (_isLowBus == 0)
             {
                 isLowBus = false;

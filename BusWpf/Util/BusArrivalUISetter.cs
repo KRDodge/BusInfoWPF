@@ -1,4 +1,7 @@
-﻿using System;
+﻿//도착하는 버스 리스트 UI출력해주는 클래스
+//여기서 시간순으로 정렬한다
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +14,6 @@ namespace BusWpf.Util
 {
     internal class BusArrivalUISetter
     {
-
-
         //도착하는 버스 오름차순 정렬
         public List<ArrivalBusData> SortBusArrival(List<ArrivalBusData> _dataList)
         {

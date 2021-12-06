@@ -1,4 +1,10 @@
-﻿using System;
+﻿//버스 상세정보 UI세팅해주는 클래스
+//하나의 TextBox에 여러가지 Font색상 넣을려고 RichTextBox사용
+//
+//Label여러개, TextBox여러개, String Concat
+//등을 사용하는 방법도 있긴 하지만 일단 이걸로
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
