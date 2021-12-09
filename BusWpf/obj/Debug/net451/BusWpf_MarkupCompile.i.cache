@@ -1,7 +1,7 @@
 ﻿BusWpf
 1.0.0.0
 
-exe
+winexe
 C#
 .cs
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Debug\net451\
@@ -12,8 +12,8 @@ TRACE;DEBUG;NETFRAMEWORK;NET451;
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\App.xaml
 11407045341
 
-161005297101
-79-263061538
+11602611017
+81-1510930061
 MainWindow.xaml;
 
 True

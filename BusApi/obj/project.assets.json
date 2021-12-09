@@ -1,14 +1,26 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
+    ".NETFramework,Version=v4.5.1": {
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/net45/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Net.Http/4.3.4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       }
     }
@@ -40,11 +52,54 @@
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "packageIcon.png"
       ]
+    },
+    "System.Net.Http/4.3.4": {
+      "sha512": "aOa2d51SEbmM+H+Csw7yJOuNZoHkrP2XnAurye5HWYgGVVU54YZDvsLUYRv6h18X3sPnjNCANmN7ZhIPiqMcjA==",
+      "type": "package",
+      "path": "system.net.http/4.3.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/Xamarinmac20/_._",
+        "lib/monoandroid10/_._",
+        "lib/monotouch10/_._",
+        "lib/net45/_._",
+        "lib/net46/System.Net.Http.dll",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/Xamarinmac20/_._",
+        "ref/monoandroid10/_._",
+        "ref/monotouch10/_._",
+        "ref/net45/_._",
+        "ref/net46/System.Net.Http.dll",
+        "ref/netcore50/System.Net.Http.dll",
+        "ref/netstandard1.1/System.Net.Http.dll",
+        "ref/netstandard1.3/System.Net.Http.dll",
+        "ref/portable-net45+win8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll",
+        "runtimes/win/lib/net46/System.Net.Http.dll",
+        "runtimes/win/lib/netcore50/System.Net.Http.dll",
+        "runtimes/win/lib/netstandard1.3/System.Net.Http.dll",
+        "system.net.http.4.3.4.nupkg.sha512",
+        "system.net.http.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
-    "net6.0": [
-      "Newtonsoft.Json >= 13.0.1"
+    ".NETFramework,Version=v4.5.1": [
+      "Newtonsoft.Json >= 13.0.1",
+      "System.Net.Http >= 4.3.4"
     ]
   },
   "packageFolders": {
@@ -69,15 +124,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net451"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net451": {
+          "targetAlias": "net451",
           "projectReferences": {}
         }
       },
@@ -88,27 +143,16 @@
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
+      "net451": {
+        "targetAlias": "net451",
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
-          }
-        },
-        "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
-        ],
-        "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
+          },
+          "System.Net.Http": {
+            "target": "Package",
+            "version": "[4.3.4, )"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"

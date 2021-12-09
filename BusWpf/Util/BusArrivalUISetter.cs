@@ -40,13 +40,25 @@ namespace BusWpf.Util
             else
                 color = Color.FromRgb(50, 50, 50);
 
+            //버스 노선명에 특수기호가 들어간 것이 가끔 있다
+            //ex 1000-1 1000-2 1000(퇴근) 1000(출근)
+            //버스 ID에서 숫자만 추출해 ID로 놓자
+            //1000-1 => 10001, 1000-2 => 10002번으로 바껴서 나중에 분별 가능
+            //1000(출근) => 1000출근, 1000(퇴근) => 1000퇴근으로 변경
+            //추후에 BorderName과 노선명 비교할 때 노선명에도 같은 작업 필요함
+            //(현재 해당 Border의 Name을 사용하고 있는 부분은 없음)
+            string extractBusID = _arrivalbusData.GetRouteName().ToString();
+            extractBusID = extractBusID.Replace("(", "");
+            extractBusID = extractBusID.Replace(")", "");
+            extractBusID = extractBusID.Replace("-", "");
+
             Border border = new Border()
             {
                 BorderBrush = new SolidColorBrush(color),
                 BorderThickness = new Thickness(1),
                 Width = 560,
                 Height = 60,
-                Name = "ID" + _arrivalbusData.GetRouteName().ToString(),
+                Name = "ID" + extractBusID,
             };
             border.Child = stack;
 

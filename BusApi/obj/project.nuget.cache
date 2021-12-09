@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "dv60UjCNjmA88qLt+clG4g6Zevt6bDAgU+sv1wMyQGltd2L/primCUMWKA4or53Um/emsi2K01I7X++FkC34yg==",
+  "dgSpecHash": "QI5ifoBWVAaC95zx6fzoR4Nvv+FfVlyDGRKVgMT5LkckM6ZpLdepPNTjO4mhtT8y6G37oKzuoBuzqCngRdfzrA==",
   "success": true,
   "projectFilePath": "C:\\Users\\media\\Documents\\GitHub\\BusInfoWPF\\BusApi\\BusApi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\media\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\media\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\media\\.nuget\\packages\\system.net.http\\4.3.4\\system.net.http.4.3.4.nupkg.sha512"
   ],
   "logs": []
 }

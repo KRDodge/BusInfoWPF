@@ -9,3 +9,4 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net6.0\BusApi.cspr
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net6.0\BusApi.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net6.0\ref\BusApi.dll
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net6.0\BusApi.pdb
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net6.0\BusApi.csproj.AssemblyReference.cache

@@ -1,0 +1,10 @@
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.AssemblyInfoInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.AssemblyInfo.cs
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.csproj.CoreCompileInputs.cache
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\Release\net451\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\Release\net451\BusApi.pdb
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\bin\Release\net451\Newtonsoft.Json.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.csproj.CopyComplete
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.dll
+C:\Users\media\Documents\GitHub\BusInfoWPF\BusApi\obj\Release\net451\BusApi.pdb

@@ -1,7 +1,7 @@
 ﻿BusWpf
 1.0.0.0
 
-exe
+winexe
 C#
 .cs
 C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\obj\Release\net6.0-windows\
@@ -16,5 +16,5 @@ C:\Users\media\Documents\GitHub\BusInfoWPF\BusWpf\App.xaml
 198-2088278582
 MainWindow.xaml;
 
-False
+True
 
