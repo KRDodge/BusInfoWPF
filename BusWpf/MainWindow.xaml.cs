@@ -206,7 +206,7 @@ namespace BusWpf
                 if (dummyBusDataList[i] == null)
                     return;
 
-                Border border = setter.SetBusDetailUI(dummyBusDataList[i]);
+                Border border = setter. SetBusDetailUI(dummyBusDataList[i]);
                 BusArrivalList.Items.Add(border);
             }
         }
